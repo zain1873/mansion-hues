@@ -1,0 +1,54 @@
+import React from "react";
+import "./Bestsellers.css";
+
+// Verified free-to-use Unsplash images (Unsplash License)
+const IMAGE_SOLIDS =
+"https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80"
+const IMAGE_EMBROIDERED =
+  "https://images.unsplash.com/photo-1481325545291-94394fe1cf95?auto=format&fit=crop&w=900&q=80";
+
+// Simple functional component for the "Best Sellers" section
+function BestSellers() {
+  return (
+    <section className="best-sellers">
+      {/* Header row: title on the left, "View all" button on the right */}
+      <div className="best-sellers-header">
+        <div>
+          <span className="best-sellers-eyebrow">Curated Edit</span>
+          <h2 className="best-sellers-title">Best Sellers</h2>
+        </div>
+        <button className="view-all-btn">
+          <span>View all</span>
+          <span className="arrow" aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+
+      {/* Two product cards side by side */}
+      <div className="best-sellers-grid">
+        {/* Card 1 */}
+        <a href="#" className="product-card">
+          <div className="product-image-wrap">
+            <img src={IMAGE_SOLIDS} alt="Solids" className="product-image" />
+          </div>
+          <div className="product-caption">
+            <span className="product-label">Solids</span>
+            <span className="product-cta">Shop now &rarr;</span>
+          </div>
+        </a>
+
+        {/* Card 2 */}
+        <a href="#" className="product-card">
+          <div className="product-image-wrap">
+            <img src={IMAGE_EMBROIDERED} alt="Embroidered" className="product-image" />
+          </div>
+          <div className="product-caption">
+            <span className="product-label">Embroidered</span>
+            <span className="product-cta">Shop now &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+export default BestSellers;

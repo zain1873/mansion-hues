@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap");
+
+/* ===== Section wrapper ===== */
+.best-sellers {
+  padding: 72px 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+  font-family: "Jost", sans-serif;
+  background-color: #ffffff;
+}
+
+/* ===== Header (title + View all button) ===== */
+.best-sellers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #ece7dd;
+  padding-bottom: 24px;
+}
+
+.best-sellers-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c9a66b;
+  margin-bottom: 8px;
+}
+
+.best-sellers-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #17140f;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.view-all-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #17140f;
+  padding: 4px 0 6px;
+  font-family: "Jost", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #17140f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: gap 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.view-all-btn:hover {
+  gap: 16px;
+  border-color: #c9a66b;
+  color: #c9a66b;
+}
+
+.arrow {
+  font-size: 15px;
+  transition: transform 0.3s ease;
+}
+
+.view-all-btn:hover .arrow {
+  transform: translateX(2px);
+}
+
+/* ===== Grid of product cards ===== */
+.best-sellers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ===== Individual product card ===== */
+.product-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-image-wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: #f4f1ea;
+}
+
+.product-image {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle darkening veil on hover so the caption reads clearly */
+.product-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) 45%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-card:hover .product-image-wrap::after {
+  opacity: 1;
+}
+
+.product-caption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.product-cta {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.product-card:hover .product-cta {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== Responsive design ===== */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .best-sellers {
+    padding: 56px 20px;
+  }
+
+  .best-sellers-title {
+    font-size: 32px;
+  }
+
+  .product-image {
+    height: 440px;
+  }
+}
+
+/* Mobile devices: stack cards vertically */
+@media (max-width: 600px) {
+  .best-sellers-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .view-all-btn {
+    align-self: flex-start;
+  }
+
+  .best-sellers-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .best-sellers-title {
+    font-size: 26px;
+  }
+
+  .product-image {
+    height: 420px;
+  }
+
+  .product-cta {
+    opacity: 1;
+    transform: none;
+  }
+}
