@@ -14,9 +14,9 @@ function home() {
       <HeroSection/>
       <SpecialCollections/>
       <CarousalCollection/>
-      <SideBy/>
+      {/* <SideBy/> */}
       <SolidsCollection/>
-      <WarmDaysBanner/>
+      {/* <WarmDaysBanner/> */}
       <BestSellers/>
       <Footer/>
       
