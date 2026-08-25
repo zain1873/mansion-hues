@@ -23,27 +23,27 @@ function BestSellers() {
         </button>
       </div>
 
-      {/* Two product cards side by side */}
+      {/* Two products cards side by side */}
       <div className="best-sellers-grid">
         {/* Card 1 */}
-        <a href="#" className="product-card">
-          <div className="product-image-wrap">
-            <img src={IMAGE_SOLIDS} alt="Solids" className="product-image" />
+        <a href="#" className="products-card">
+          <div className="products-image-wrap">
+            <img src={IMAGE_SOLIDS} alt="Solids" className="products-image" />
           </div>
-          <div className="product-caption">
-            <span className="product-label">Solids</span>
-            <span className="product-cta">Shop now &rarr;</span>
+          <div className="products-caption">
+            <span className="products-label">Solids</span>
+            <span className="products-cta">Shop now &rarr;</span>
           </div>
         </a>
 
         {/* Card 2 */}
-        <a href="#" className="product-card">
-          <div className="product-image-wrap">
-            <img src={IMAGE_EMBROIDERED} alt="Embroidered" className="product-image" />
+        <a href="#" className="products-card">
+          <div className="products-image-wrap">
+            <img src={IMAGE_EMBROIDERED} alt="Embroidered" className="products-image" />
           </div>
-          <div className="product-caption">
-            <span className="product-label">Embroidered</span>
-            <span className="product-cta">Shop now &rarr;</span>
+          <div className="products-caption">
+            <span className="products-label">Embroidered</span>
+            <span className="products-cta">Shop now &rarr;</span>
           </div>
         </a>
       </div>

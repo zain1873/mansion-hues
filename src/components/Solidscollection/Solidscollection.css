@@ -1,0 +1,292 @@
+/* ===========================================================
+   Solids Collection - custom styles
+   All classes use the "sld-" prefix so they never collide
+   with classes from other components.
+   (Layout/spacing/flex/grid is handled by Tailwind in the JSX.
+   This file only handles colors, typography, hover effects,
+   borders, shadows, animations and responsiveness.)
+   =========================================================== */
+
+/* Section background */
+.sld-section {
+  background-color: #f7f5f2;
+  padding: 50px 0 60px;
+}
+
+/* ---------- Tabs ---------- */
+
+.sld-tabs {
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.sld-tab {
+  background: none;
+  border: none;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: #c9c5be; /* inactive tabs are light grey */
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.25s ease;
+}
+
+.sld-tab:hover {
+  color: #6f6b64;
+}
+
+.sld-tab-active {
+  color: #1a1a1a; /* active tab is dark/black like the screenshot */
+}
+
+/* ---------- Arrows row (above the slider, right aligned) ---------- */
+
+.sld-arrows {
+  margin: 12px 0 20px;
+}
+
+.sld-arrow-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #d8d4cd;
+  background-color: transparent;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+}
+
+.sld-arrow-btn:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.sld-arrow-btn:active {
+  transform: scale(0.92);
+}
+
+/* Swiper disables the button automatically at the start/end */
+.sld-arrow-btn.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.sld-arrow-btn.swiper-button-disabled:hover {
+  background-color: transparent;
+  color: #1a1a1a;
+}
+
+/* ---------- Swiper slider ---------- */
+
+.sld-swiper {
+  padding-bottom: 4px;
+}
+
+/* ---------- Product card ---------- */
+
+.sld-card {
+  cursor: pointer;
+  /* thin divider between cards, like the screenshot */
+  border-right: 1px solid #e7e3dc;
+  padding: 0 14px;
+}
+
+.sld-img-wrap {
+  position: relative; /* needed so images + badge can stack */
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #ece8e2;
+  border-radius: 2px;
+}
+
+/* Both images sit exactly on top of each other via absolute positioning,
+   so they always overlap perfectly and crossfade cleanly on hover. */
+.sld-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.sld-img-default {
+  opacity: 1;
+  z-index: 1;
+}
+
+.sld-img-hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Swap images on hover */
+.sld-card:hover .sld-img-default {
+  opacity: 0;
+}
+
+.sld-card:hover .sld-img-hover {
+  opacity: 1;
+}
+
+/* Discount badge, top-left corner of the image */
+.sld-badge {
+  top: 12px;
+  left: 12px;
+  background-color: #c0453c; /* red/terracotta like the screenshot */
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 5px 10px;
+  border-radius: 2px;
+  z-index: 3; /* sits above both stacked images */
+}
+
+/* Plus (quick add) button, bottom-right of the image, hidden by default */
+.sld-plus-btn {
+  right: 12px;
+  bottom: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+  z-index: 3; /* sits above both stacked images */
+}
+
+.sld-card:hover .sld-plus-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sld-plus-btn:hover {
+  background-color: #3a3a3a;
+}
+
+/* Text under the image */
+.sld-info {
+  margin-top: 14px;
+  gap: 6px;
+}
+
+.sld-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.sld-price-row {
+  gap: 8px;
+}
+
+.sld-price {
+  font-size: 13px;
+  color: #6f6b64;
+  margin: 0;
+}
+
+/* When there is a discount, the current price turns red */
+.sld-price-off {
+  color: #c0453c;
+  font-weight: 600;
+}
+
+.sld-old-price {
+  font-size: 13px;
+  color: #a8a49d;
+  text-decoration: line-through;
+}
+
+/* ===========================================================
+   Responsive breakpoints
+   (Swiper's `breakpoints` prop controls how many slides show;
+   these media queries handle font sizes / spacing only.)
+   =========================================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .sld-tab {
+    font-size: 28px;
+  }
+
+  .sld-section {
+    padding: 40px 0 48px;
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+  .sld-tabs {
+    gap: 16px;
+  }
+
+  .sld-tab {
+    font-size: 22px;
+  }
+
+  .sld-name,
+  .sld-price,
+  .sld-old-price {
+    font-size: 12px;
+  }
+
+  .sld-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .sld-section {
+    padding: 30px 0 36px;
+  }
+
+  .sld-tabs {
+    gap: 10px;
+  }
+
+  .sld-tab {
+    font-size: 17px;
+  }
+
+  .sld-arrows {
+    margin: 10px 0 16px;
+  }
+
+  .sld-card {
+    border-right: none; /* dividers only make sense with multiple visible cards */
+    padding: 0 6px;
+  }
+
+  .sld-plus-btn {
+    width: 30px;
+    height: 30px;
+    right: 8px;
+    bottom: 8px;
+  }
+}
+
+/* Force exactly ONE slide per view on mobile */
+@media (max-width: 480px) {
+  .sld-swiper .swiper-slide {
+    width: 100% !important;
+  }
+}

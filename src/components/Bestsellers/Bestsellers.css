@@ -72,28 +72,28 @@
   transform: translateX(2px);
 }
 
-/* ===== Grid of product cards ===== */
+/* ===== Grid of products cards ===== */
 .best-sellers-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
 
-/* ===== Individual product card ===== */
-.product-card {
+/* ===== Individual products card ===== */
+.products-card {
   position: relative;
   display: block;
   text-decoration: none;
   color: inherit;
 }
 
-.product-image-wrap {
+.products-image-wrap {
   position: relative;
   overflow: hidden;
   background-color: #f4f1ea;
 }
 
-.product-image {
+.products-image {
   width: 100%;
   height: 560px;
   object-fit: cover;
@@ -102,7 +102,7 @@
 }
 
 /* Subtle darkening veil on hover so the caption reads clearly */
-.product-image-wrap::after {
+.products-image-wrap::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -111,15 +111,15 @@
   transition: opacity 0.4s ease;
 }
 
-.product-card:hover .product-image {
+.products-card:hover .products-image {
   transform: scale(1.05);
 }
 
-.product-card:hover .product-image-wrap::after {
+.products-card:hover .products-image-wrap::after {
   opacity: 1;
 }
 
-.product-caption {
+.products-caption {
   position: absolute;
   left: 24px;
   right: 24px;
@@ -129,7 +129,7 @@
   justify-content: space-between;
 }
 
-.product-label {
+.products-label {
   font-family: "Cormorant Garamond", serif;
   font-size: 24px;
   font-weight: 600;
@@ -138,7 +138,7 @@
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
-.product-cta {
+.products-cta {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -149,7 +149,7 @@
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.product-card:hover .product-cta {
+.products-card:hover .products-cta {
   opacity: 1;
   transform: translateX(0);
 }
@@ -166,7 +166,7 @@
     font-size: 32px;
   }
 
-  .product-image {
+  .products-image {
     height: 440px;
   }
 }
@@ -192,11 +192,11 @@
     font-size: 26px;
   }
 
-  .product-image {
+  .products-image {
     height: 420px;
   }
 
-  .product-cta {
+  .products-cta {
     opacity: 1;
     transform: none;
   }

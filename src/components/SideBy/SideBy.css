@@ -1,0 +1,116 @@
+/* ---------- Section wrapper ---------- */
+.sideby {
+  width: 100%;
+  min-height: 600px;
+}
+
+/* ---------- Left: video ---------- */
+.sideby-video-wrap {
+  width: 50%;
+  overflow: hidden;
+}
+
+.sideby-video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Right: text content ---------- */
+.sideby-content {
+  width: 50%;
+  background-color: #e7e5e1;
+  text-align: center;
+  padding: 40px;
+}
+
+.sideby-title {
+  font-size: 48px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+  letter-spacing: 0.2px;
+}
+
+.sideby-subtitle {
+  font-size: 16px;
+  color: #3a3a3a;
+  margin: 0 0 32px;
+}
+
+.sideby-btn {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background-color 250ms ease, transform 150ms ease;
+}
+
+.sideby-btn:hover {
+  background-color: #3a3a3a;
+}
+
+.sideby-btn:active {
+  transform: scale(0.96);
+}
+
+/* =========================================================
+   Responsive breakpoints
+========================================================= */
+
+/* Tablet: smaller title, keep side-by-side */
+@media (max-width: 1023px) {
+  .sideby-title {
+    font-size: 36px;
+  }
+
+  .sideby {
+    min-height: 480px;
+  }
+}
+
+/* Mobile: stack video on top, content below */
+@media (max-width: 767px) {
+  .sideby {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .sideby-video-wrap,
+  .sideby-content {
+    width: 100%;
+  }
+
+  .sideby-video-wrap {
+    height: 320px;
+  }
+
+  .sideby-content {
+    padding: 32px 20px;
+  }
+
+  .sideby-title {
+    font-size: 28px;
+  }
+
+  .sideby-subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .sideby-video-wrap {
+    height: 260px;
+  }
+
+  .sideby-title {
+    font-size: 24px;
+  }
+}

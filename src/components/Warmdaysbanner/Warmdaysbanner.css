@@ -1,0 +1,165 @@
+/* ===========================================================
+   Warm Days Banner - custom styles
+   All classes use the "wdb-" prefix so they never collide
+   with classes from other components.
+   (Layout/spacing/grid/flex is handled by Tailwind in the JSX.
+   This file only handles colors, typography, hover effects,
+   borders, shadows, animations and responsiveness.)
+   =========================================================== */
+
+/* Outer section */
+.wdb-section {
+  background-color: #ffffff;
+}
+
+/* Two-column grid: left image | right column.
+   Grid template columns are custom sizing, so they live here
+   instead of as a Tailwind utility. */
+.wdb-grid {
+  grid-template-columns: 1fr 1fr;
+  min-height: 620px;
+}
+
+/* ---------- Left column ---------- */
+
+.wdb-left {
+  overflow: hidden;
+}
+
+.wdb-left-image {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ---------- Right column ---------- */
+
+.wdb-right {
+  height: 100%;
+}
+
+/* Text panel (top half of the right column) */
+.wdb-text-panel {
+  flex: 1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.wdb-heading {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-style: italic;
+  font-size: 42px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.wdb-subheading {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-style: normal;
+  font-size: 34px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 20px;
+}
+
+.wdb-cta {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1a1a1a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.wdb-cta:hover {
+  opacity: 0.6;
+}
+
+/* Bottom image panel (bottom half of the right column) */
+.wdb-bottom-image-wrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+.wdb-bottom-image {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ===========================================================
+   Responsive breakpoints
+   =========================================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .wdb-grid {
+    min-height: 520px;
+  }
+
+  .wdb-heading {
+    font-size: 32px;
+  }
+
+  .wdb-subheading {
+    font-size: 26px;
+  }
+}
+
+/* Small tablets / large phones: stack everything vertically */
+@media (max-width: 768px) {
+  .wdb-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .wdb-left {
+    height: 420px;
+  }
+
+  .wdb-text-panel {
+    padding: 32px 16px;
+  }
+
+  .wdb-heading {
+    font-size: 26px;
+  }
+
+  .wdb-subheading {
+    font-size: 20px;
+  }
+
+  .wdb-bottom-image-wrap {
+    height: 320px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .wdb-left {
+    height: 320px;
+  }
+
+  .wdb-text-panel {
+    padding: 24px 12px;
+  }
+
+  .wdb-heading {
+    font-size: 20px;
+  }
+
+  .wdb-subheading {
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  .wdb-cta {
+    font-size: 11px;
+  }
+
+  .wdb-bottom-image-wrap {
+    height: 240px;
+  }
+}

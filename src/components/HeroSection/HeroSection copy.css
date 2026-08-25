@@ -2,7 +2,7 @@
 .hero-section {
   height: 100vh;
   min-height: 500px;
-  background-image: url("./banner.jpg");
+  background-image: url("./banner");
   background-size: cover;
   background-position: inherit;
 }

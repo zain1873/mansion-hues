@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import navLogo from "../../assets/nav-logo.png";
-import lookbookImg from "../../assets/banner.webp";
+import lookbookImg from "../../assets/banner.jpg";
 import CartDrawer from "../Cartdrawer/CartDrawer";
 
 function Navbar() {
@@ -59,16 +59,18 @@ function Navbar() {
           <div className="shop-mega-menu-inner">
             <div className="shop-menu-col">
               <h4>Main Menu</h4>
-              <a href="/new-arrivals">New Arrivals</a>
-              <a href="/print-shop">The Print Shop</a>
-              <a href="/mandarin-set">Mandarin Set</a>
-              <a href="/monochrome-edit">Monochrome Edit</a>
+              <a href="/new-arrivals">New In</a>
+              <a href="/formal-edit">Formal Edit</a>
+              <a href="/co-ordsets">Co-Ord Sets</a>
+              <a href="/fusion-edit">Fusion Edit</a>
             </div>
 
             <div className="shop-menu-col">
               <h4>By Type</h4>
               <a href="/type/solids">Solids</a>
               <a href="/type/embroidered">Embroidered</a>
+              <a href="/type/printed">Printed</a>
+              <a href="/type/monochrome">monochrome</a>
             </div>
 
             <div className="shop-menu-col">

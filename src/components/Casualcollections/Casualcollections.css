@@ -1,0 +1,266 @@
+/* Section background */
+.casual-collections {
+  background-color: #f7f5f2;
+  padding: 60px 0;
+}
+
+/* ---------- Header ---------- */
+
+.casual-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.casual-title-italic {
+  font-style: italic;
+  font-family: "Georgia", serif;
+}
+
+.view-all-link {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1a1a1a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.view-all-link:hover {
+  opacity: 0.6;
+}
+
+/* Prev / Next arrow buttons */
+.arrow-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #d8d4cd;
+  background-color: transparent;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.arrow-button:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.arrow-button:active {
+  transform: scale(0.92);
+}
+
+/* Swiper disables the button automatically at the start/end */
+.arrow-button.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.arrow-button.swiper-button-disabled:hover {
+  background-color: transparent;
+  color: #1a1a1a;
+}
+
+/* Give the header a little breathing room above the slider */
+.casual-header {
+  margin-bottom: 28px;
+}
+
+/* ---------- Swiper slider ---------- */
+
+.casual-swiper {
+  padding-bottom: 4px;
+}
+
+/* ---------- Product card ---------- */
+
+.product-card {
+  cursor: pointer;
+}
+
+.product-image-wrapper {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: #ece8e2;
+  border-radius: 2px;
+  position: relative;
+}
+
+/* Both images sit on top of each other; we crossfade between them */
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: top center;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.product-image-default {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.product-image-hover {
+  opacity: 0;
+  margin-top: 0;
+}
+
+/* Swap images on hover */
+.product-card:hover .product-image-default {
+  opacity: 0;
+  transform: scale(1.03);
+}
+
+.product-card:hover .product-image-hover {
+  opacity: 1;
+}
+
+/* Plus (quick add) button, bottom-right of the image, hidden by default */
+.plus-button {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+  z-index: 2;
+}
+
+.product-card:hover .plus-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.plus-button:hover {
+  background-color: #3a3a3a;
+}
+
+/* Text under the image */
+.product-info {
+  margin-top: 14px;
+  gap: 4px;
+}
+
+.product-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.product-price {
+  font-size: 13px;
+  color: #6f6b64;
+  margin: 0;
+}
+
+/* ---------- Responsive breakpoints ---------- */
+
+/* Laptops / small desktops */
+@media (max-width: 1280px) {
+  .casual-title {
+    font-size: 34px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .casual-title {
+    font-size: 30px;
+  }
+
+  .casual-collections {
+    padding: 48px 0;
+  }
+
+  .casual-header {
+    margin-bottom: 22px;
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+  .casual-title {
+    font-size: 24px;
+  }
+
+  .casual-header {
+    margin-bottom: 18px;
+  }
+
+  .view-all-link {
+    font-size: 12px;
+  }
+
+  .product-name,
+  .product-price {
+    font-size: 12px;
+  }
+
+  .casual-header-right {
+    gap: 16px;
+  }
+
+  .arrow-button {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .casual-collections {
+    padding: 32px 0;
+  }
+
+  .casual-title {
+    font-size: 20px;
+  }
+
+  .casual-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .casual-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .plus-button {
+    width: 28px;
+    height: 28px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .product-name,
+  .product-price {
+    font-size: 11px;
+  }
+}

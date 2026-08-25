@@ -74,7 +74,7 @@
 
 .shop-mega-menu-inner {
   display: grid;
-  grid-template-columns: repeat(5, 1fr) 1.2fr;
+  grid-template-columns: repeat(3, 1fr) 1.2fr;
   gap: 2rem;
   padding: 3rem 4rem;
 }
@@ -99,6 +99,9 @@
   opacity: 0.6;
   text-decoration: underline;
   color: var(--theme-color);
+}
+.shop-menu-image {
+  width: 500px;
 }
 
 .shop-menu-image img {
@@ -401,6 +404,7 @@
 
   .shop-mega-menu-inner {
     padding: 2.5rem 2.5rem;
+
     gap: 1.5rem;
   }
 
