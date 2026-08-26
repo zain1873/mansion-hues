@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap");
+
+/* ===========================================================
+   FAQ section — custom styles.
+   Classes use the "faq-" prefix so they never collide with
+   other components. Matches the Maison Hues theme:
+   light cream bg, near-black ink, lavender accent, Jost + Georgia.
+   =========================================================== */
+.faq-section {
+  background-color: #f5f5f4; /* warm cream, same as collections section */
+  font-family: "Jost", sans-serif;
+  padding: 72px 0;
+}
+
+.faq-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ===========================================================
+   Left column: title + support card
+   =========================================================== */
+.faq-left {
+  position: sticky;
+  top: 32px;
+}
+
+.faq-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 36px;
+  color: #1a1a1a;
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+.faq-title-italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.faq-subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 28px;
+}
+
+.faq-support-card {
+  display: flex;
+  gap: 16px;
+  padding: 22px 20px;
+  background-color: #ffffff;
+  border: 1px solid #e8e4da;
+  border-radius: 2px;
+}
+
+.faq-support-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a89ecb; /* lavender accent */
+  background-color: rgba(168, 158, 203, 0.14);
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.faq-support-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #a89ecb;
+  margin: 0 0 6px;
+}
+
+.faq-support-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+
+.faq-support-link {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f4f1ea;
+  background-color: #121212;
+  padding: 10px 18px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.faq-support-link:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* ===========================================================
+   Right column: accordion
+   =========================================================== */
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid #dedad0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid #dedad0;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-question-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1.35;
+  transition: color 0.25s ease;
+}
+
+.faq-question:hover .faq-question-text {
+  color: #a89ecb; /* lavender accent on hover */
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  color: #555;
+  font-size: 12px;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.faq-item:has(.faq-question[aria-expanded="true"]) .faq-icon {
+  background-color: #121212;
+  border-color: #121212;
+  color: #f4f1ea;
+}
+
+/* Animated answer panel: collapses with max-height + opacity */
+.faq-answer-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.3s ease;
+  opacity: 0;
+  padding: 0 4px;
+}
+
+.faq-answer-open {
+  max-height: 360px;
+  opacity: 1;
+  padding: 0 4px 22px;
+}
+
+.faq-answer {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #555;
+  margin: 0;
+}
+
+/* ===========================================================
+   Responsive
+   =========================================================== */
+
+/* Tablets: narrow gap, reduce title size */
+@media (max-width: 1024px) {
+  .faq-section {
+    padding: 56px 0;
+  }
+
+  .faq-container {
+    gap: 32px;
+  }
+
+  .faq-title {
+    font-size: 30px;
+  }
+
+  .faq-question-text {
+    font-size: 18px;
+  }
+}
+
+/* Small tablets: stack columns, un-stick left column */
+@media (max-width: 768px) {
+  .faq-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .faq-left {
+    position: static;
+  }
+
+  .faq-title {
+    font-size: 28px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .faq-section {
+    padding: 44px 0;
+  }
+
+  .faq-container {
+    padding: 0 16px;
+    gap: 28px;
+  }
+
+  .faq-title {
+    font-size: 24px;
+  }
+
+  .faq-subtitle {
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  .faq-support-card {
+    flex-direction: column;
+    padding: 18px 16px;
+  }
+
+  .faq-question {
+    padding: 18px 2px;
+  }
+
+  .faq-question-text {
+    font-size: 17px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+  }
+}

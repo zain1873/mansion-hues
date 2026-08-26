@@ -11,16 +11,16 @@ import { FaTiktok } from "react-icons/fa6";
 import footerLogo from "../../assets/nav-logo.png";
 import "./Footer.css";
 
-// Footer: 4 columns on top (Newsletter, Company, Pages, Contact Us)
+// Footer: 5 columns on top (Logo, Company, Pages, Contact Us, Newsletter)
 // + a bottom bar with the brand wordmark and social icons.
 function Footer() {
   return (
     <footer className="footer">
-      {/* ---------- Top row: 4 columns ---------- */}
+      {/* ---------- Top row: 5 columns ---------- */}
       <div className="footer-container flex flex-wrap gap-8">
 
-        {/* Column 1: Newsletter */}
-        <div className="footer-column">
+        {/* Column 1: Logo only */}
+        <div className="footer-column footer-column-logo">
           <a href="/" className="footer-logo-link" aria-label="Maison Hues home">
             <img
               src={footerLogo}
@@ -28,25 +28,6 @@ function Footer() {
               className="footer-logo-img footer-logo"
             />
           </a>
-          <h3 className="footer-heading">JOIN OUR NEWSLETTER</h3>
-          <p className="footer-text footer-text-muted">
-            We&apos;ll send you updates once per week.
-          </p>
-
-          <form
-            className="footer-subscribe flex"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="email"
-              placeholder="Email address"
-              className="footer-input"
-              required
-            />
-            <button type="submit" className="footer-subscribe-btn">
-              SUBSCRIBE
-            </button>
-          </form>
         </div>
 
         {/* Column 2: Company */}
@@ -68,7 +49,7 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Column 3: Pages (your existing policy links) */}
+        {/* Column 3: Pages */}
         <div className="footer-column">
           <h3 className="footer-heading">PAGES</h3>
           <ul className="footer-list">
@@ -129,11 +110,34 @@ function Footer() {
             </li>
           </ul>
         </div>
+
+        {/* Column 5: Newsletter (moved to right end) */}
+        <div className="footer-column footer-column-newsletter">
+          <h3 className="footer-heading">JOIN OUR NEWSLETTER</h3>
+          <p className="footer-text footer-text-muted">
+            We&apos;ll send you updates once per week.
+          </p>
+
+          <form
+            className="footer-subscribe flex"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <input
+              type="email"
+              placeholder="Email address"
+              className="footer-input"
+              required
+            />
+            <button type="submit" className="footer-subscribe-btn">
+              SUBSCRIBE
+            </button>
+          </form>
+        </div>
       </div>
 
       {/* ---------- Bottom row: brand wordmark + social icons ---------- */}
       <div className="footer-bottom flex items-center justify-between flex-wrap gap-6">
- 
+
         <ul className="footer-social-icons flex items-center gap-4">
           <li>
             <a

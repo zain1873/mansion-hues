@@ -8,12 +8,12 @@
   padding: 56px 32px 32px;
 }
 
-/* ---------- Top row: 4-column grid ---------- */
+/* ---------- Top row: 5-column grid ---------- */
 .footer-container {
   max-width: 1360px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 0.9fr 0.9fr 1fr;
+  grid-template-columns: 0.8fr 0.9fr 0.9fr 1fr 1.1fr;
   gap: 40px;
 }
 
@@ -21,8 +21,21 @@
   min-width: 0; /* lets long links wrap instead of overflowing the grid track */
 }
 
+/* Logo column: no heading text, just center the logo vertically with others */
+.footer-column-logo {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Newsletter column pushed to the far right end */
+.footer-column-newsletter {
+  justify-self: end;
+  width: 100%;
+}
+
 /* ---------- Headings (small muted uppercase label) ---------- */
 .footer-heading {
+  font-family: "Georgia", "Times New Roman", serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1.5px;
@@ -164,13 +177,12 @@
 .footer-logo-link {
   display: inline-block;
   line-height: 0;
-  margin-bottom: 16px;
-  height: 110px;
+  height: 180px;
 }
 
 .footer-logo-img {
   height: 100%;
-  width: auto;
+  width: 100%;
   object-fit: cover;
   display: inline-block;
 }
@@ -203,11 +215,35 @@
    Responsive
 ============================================================= */
 
+/* Large tablet / small desktop: 3 columns, logo full width on top */
+@media (max-width: 1100px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 40px;
+  }
+
+  .footer-column-logo {
+    grid-column: 1 / -1;
+  }
+
+  .footer-column-newsletter {
+    justify-self: stretch;
+  }
+
+  .footer-subscribe {
+    max-width: 100%;
+  }
+}
+
 /* Tablet: 2 columns */
 @media (max-width: 900px) {
   .footer-container {
     grid-template-columns: 1fr 1fr;
     row-gap: 44px;
+  }
+
+  .footer-column-newsletter {
+    grid-column: 1 / -1;
   }
 
   .footer-subscribe {
@@ -224,6 +260,10 @@
   .footer-container {
     grid-template-columns: 1fr;
     row-gap: 36px;
+  }
+
+  .footer-column-newsletter {
+    grid-column: auto;
   }
 
   .footer-bottom {

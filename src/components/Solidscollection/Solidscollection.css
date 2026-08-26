@@ -13,31 +13,20 @@
   padding: 50px 0 60px;
 }
 
-/* ---------- Tabs ---------- */
+/* ---------- Section title ---------- */
 
-.sld-tabs {
-  gap: 24px;
-  margin-bottom: 8px;
-}
-
-.sld-tab {
-  background: none;
-  border: none;
+.sld-title {
   font-family: "Georgia", "Times New Roman", serif;
-  font-size: 34px;
+  font-size: 40px;
   font-weight: 400;
-  color: #c9c5be; /* inactive tabs are light grey */
-  cursor: pointer;
-  padding: 4px 0;
-  transition: color 0.25s ease;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0 0 28px;
 }
 
-.sld-tab:hover {
-  color: #6f6b64;
-}
-
-.sld-tab-active {
-  color: #1a1a1a; /* active tab is dark/black like the screenshot */
+.sld-title-italic {
+  font-style: italic;
+  font-family: "Georgia", serif;
 }
 
 /* ---------- Arrows row (above the slider, right aligned) ---------- */
@@ -222,8 +211,8 @@
 
 /* Tablets */
 @media (max-width: 1024px) {
-  .sld-tab {
-    font-size: 28px;
+  .sld-title {
+    font-size: 34px;
   }
 
   .sld-section {
@@ -233,12 +222,9 @@
 
 /* Small tablets / large phones */
 @media (max-width: 768px) {
-  .sld-tabs {
-    gap: 16px;
-  }
-
-  .sld-tab {
-    font-size: 22px;
+  .sld-title {
+    font-size: 28px;
+    margin-bottom: 22px;
   }
 
   .sld-name,
@@ -259,12 +245,9 @@
     padding: 30px 0 36px;
   }
 
-  .sld-tabs {
-    gap: 10px;
-  }
-
-  .sld-tab {
-    font-size: 17px;
+  .sld-title {
+    font-size: 24px;
+    margin-bottom: 18px;
   }
 
   .sld-arrows {

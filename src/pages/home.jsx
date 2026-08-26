@@ -7,6 +7,7 @@ import CarousalCollection from '../components/Casualcollections/Casualcollection
 import SolidsCollection from '../components/Solidscollection/Solidscollection'
 import WarmDaysBanner from '../components/Warmdaysbanner/Warmdaysbanner'
 import SpecialCollections from '../components/Specialcollections/Specialcollections'
+import Faq from '../components/Faq/Faq'
 
 function home() {
   return (
@@ -14,10 +15,11 @@ function home() {
       <HeroSection/>
       <SpecialCollections/>
       <CarousalCollection/>
-      {/* <SideBy/> */}
+      <SideBy/>
       <SolidsCollection/>
-      {/* <WarmDaysBanner/> */}
+      <WarmDaysBanner/>
       <BestSellers/>
+      <Faq/>
       <Footer/>
       
     </div>

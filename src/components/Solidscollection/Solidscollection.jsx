@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 // Swiper components + styles
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -57,9 +57,6 @@ const ArrowRightIcon = () => (
     />
   </svg>
 );
-
-// The tab names shown above the slider
-const tabs = ["Solids", "Printed", "Embroidered"];
 
 // All product data lives in one simple array.
 // discount is optional -- only items with a discount show the badge + old price
@@ -151,9 +148,6 @@ function ProductCard({ product }) {
 
 // Main component
 export default function SolidsCollection() {
-  // Tracks which tab (Solids / Printed / Embroidered) is active
-  const [activeTab, setActiveTab] = useState("Solids");
-
   // Refs so our custom arrow buttons can control the Swiper slider
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -161,18 +155,10 @@ export default function SolidsCollection() {
   return (
     <section className="sld-section w-full">
       <div className="sld-container w-full max-w-screen-2xl mx-auto px-4">
-        {/* Tabs header */}
-        <div className="sld-tabs flex items-center justify-center flex-wrap">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              className={tab === activeTab ? "sld-tab sld-tab-active" : "sld-tab"}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+        {/* Section title */}
+        <h2 className="sld-title">
+          Our <span className="sld-title-italic">Solids</span> Collection
+        </h2>
 
         {/* Custom prev/next arrows sit above the slider on the right */}
         <div className="sld-arrows flex items-center justify-end gap-2">
