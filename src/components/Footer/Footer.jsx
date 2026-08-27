@@ -39,13 +39,13 @@ function Footer() {
               <Link to="/about" className="footer-link">About Us</Link>
             </li>
             <li className="footer-list-item">
-              <a href="#" className="footer-link">Contact Us</a>
+              <a href="/contact-us" className="footer-link">Contact Us</a>
             </li>
-            <li className="footer-list-item">
+            {/* <li className="footer-list-item">
               <a href="#" className="footer-link">Careers</a>
-            </li>
+            </li> */}
             <li className="footer-list-item">
-              <Link to="/terms-and-condition" className="footer-link">Terms and Conditions</Link>
+              <Link to="/terms" className="footer-link">Terms</Link>
             </li>
           </ul>
         </div>

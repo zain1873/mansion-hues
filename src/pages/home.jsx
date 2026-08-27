@@ -14,10 +14,10 @@ function home() {
     <div>
       <HeroSection/>
       <SpecialCollections/>
+      <WarmDaysBanner/>
       <CarousalCollection/>
       <SideBy/>
       <SolidsCollection/>
-      <WarmDaysBanner/>
       <BestSellers/>
       <Faq/>
       <Footer/>

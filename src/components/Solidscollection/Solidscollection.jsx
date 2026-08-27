@@ -97,6 +97,15 @@ const products = [
     image: image4,
     hoverImage: imagehover4,
   },
+    {
+    id: 5,
+    name: "Dyed Crosshatch Shirt",
+    price: "Rs.2,993.00",
+    oldPrice: "Rs.3,990.00",
+    discount: "25% OFF",
+    image: image3,
+    hoverImage: imagehover3,
+  },
 ];
 
 // One product card. Kept as its own small component so the

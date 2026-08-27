@@ -6,6 +6,7 @@ import About from './pages/About';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
 import FaqPage from './pages/FaqPage';
 import StoreLocator from './pages/StoreLocator/StoreLocator';
+import ContactPage from './pages/Contactpage/Contactpage';
 // import ProductPage from "./pages/ProductPage/ProductPage";
 
 
@@ -15,8 +16,9 @@ function App() {
       <WhatsAppButton phoneNumber="923001234567" message="Hello! I would like to know more." />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/terms-and-condition" element={<TermsAndConditions />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact-us" element={<ContactPage />} />
         <Route path="/faqs" element={<FaqPage/>} />
         <Route path="/store-locator" element={<StoreLocator/>} />
         {/* <Route path="/product/:id" element={<ProductPage />} /> */}

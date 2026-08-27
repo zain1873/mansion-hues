@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   z-index: 10;
-  background: #5F6049; 
+  background: #C6CDC4; 
   color: #fff; 
   min-height: 70px;
   box-sizing: border-box;
@@ -38,7 +38,7 @@
   position: static;
 }
 .navbar-shop-btn:hover {
-  color: var(--theme-color);
+  color: #000;
 }
 .navbar-shop-btn {
   min-height: 45px;
@@ -248,7 +248,7 @@
   transform: translateX(-50%);
   width: 90px;
   height: 125px; 
-  background: #5F6049;
+  background: #C6CDC4;
   border-radius: 50% / 40%; /* oval shape */
   display: flex;
   align-items: center;
