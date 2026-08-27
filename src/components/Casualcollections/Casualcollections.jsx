@@ -1,22 +1,13 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 // Swiper components + styles
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-// images
-import image1 from "../../assets/cloths/image-1.webp"
-import image2 from "../../assets/cloths/image-2.webp"
-import image3 from "../../assets/cloths/image-3.webp"
-import image4 from "../../assets/cloths/image-4.webp"
-
-// hoverable images
-import imagehover1 from "../../assets/cloths/image-1-hover.webp"
-import imagehover2 from "../../assets/cloths/image-2-hover.webp"
-import imagehover3 from "../../assets/cloths/image-3-hover.webp"
-import imagehover4 from "../../assets/cloths/image-4-hover.webp"
-
+// Product data (ab centralized file se aa raha hai)
+import products from "../../data/products";
 
 // Our own custom CSS (colors, fonts, hover effects, media queries)
 import "./Casualcollections.css";
@@ -59,51 +50,15 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-// All product data lives in one simple array.
-// Swap these paths with your own files inside src/assets/cloths
-const products = [
-  {
-    id: 1,
-    name: "2 PC Printed Cambric Suit",
-    price: "Rs.6,990.00",
-    image: image1,
-    hoverImage: imagehover1,
-  },
-  {
-    id: 2,
-    name: "2 PC Embroidered Slub Lawn Suit",
-    price: "Rs.7,290.00",
-    image: image2,
-    hoverImage: imagehover2,
-  },
-  {
-    id: 3,
-    name: "2 PC Dyed Crosshatch Suit",
-    price: "Rs.5,990.00",
-    image: image3,
-    hoverImage: imagehover3,
-  },
-  {
-    id: 4,
-    name: "Printed Lawn Shirt",
-    price: "Rs.4,290.00",
-    image: image4,
-    hoverImage: imagehover4,
-  },
-    {
-    id: 5,
-    name: "Printed Lawn Shirt",
-    price: "Rs.4,290.00",
-    image: image4,
-    hoverImage: imagehover4,
-  },
-];
-
 // One product card. Keeping this as its own small component
 // keeps the main component easy to read.
-function ProductCard({ product }) {
+function ProductCard({ product, onCardClick }) {
   return (
-    <div className="product-card flex flex-col w-full">
+    <div
+      className="product-card flex flex-col w-full"
+      onClick={() => onCardClick(product.id)}
+      style={{ cursor: "pointer" }}
+    >
       {/* Image wrapper handles the hover image-swap + plus icon */}
       <div className="product-image-wrapper relative w-full">
         <img
@@ -118,7 +73,11 @@ function ProductCard({ product }) {
         />
 
         {/* Plus button, only visible on hover (see CSS) */}
-        <button className="plus-button absolute" aria-label="Quick add">
+        <button
+          className="plus-button absolute"
+          aria-label="Quick add"
+          onClick={(e) => e.stopPropagation()}
+        >
           <PlusIcon />
         </button>
       </div>
@@ -137,6 +96,11 @@ export default function CasualCollections() {
   // Refs so our custom arrow buttons can control the Swiper slider
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleCardClick = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <section className="casual-collections w-full">
@@ -169,7 +133,6 @@ export default function CasualCollections() {
           spaceBetween={20}
           slidesPerView={4}
           onBeforeInit={(swiper) => {
-            // Connect our custom arrow buttons to Swiper's navigation
             swiper.params.navigation.prevEl = prevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
           }}
@@ -178,7 +141,6 @@ export default function CasualCollections() {
             nextEl: nextRef.current,
           }}
           breakpoints={{
-            // Responsive slide counts (handled by Swiper itself)
             0: { slidesPerView: 1, spaceBetween: 14 },
             640: { slidesPerView: 2, spaceBetween: 16 },
             1024: { slidesPerView: 3, spaceBetween: 18 },
@@ -188,7 +150,7 @@ export default function CasualCollections() {
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard product={product} onCardClick={handleCardClick} />
             </SwiperSlide>
           ))}
         </Swiper>

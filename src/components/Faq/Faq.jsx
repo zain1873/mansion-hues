@@ -76,7 +76,7 @@ function Faq() {
                 href="https://wa.me/923167779661"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="faq-support-link"
+                className="theme-btn"
               >
                 Chat with us
               </a>

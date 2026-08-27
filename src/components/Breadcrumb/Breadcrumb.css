@@ -1,0 +1,31 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 24px 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1;
+  height: 50vh;
+  background-color: #f5f5f4;
+    display: none;
+
+}
+
+.breadcrumb-home {
+  color: var(--theme-color, #c9a66b);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.breadcrumb-home:hover {
+  opacity: 0.7;
+}
+
+.breadcrumb-separator,
+.breadcrumb-current {
+  color: #999999;
+}

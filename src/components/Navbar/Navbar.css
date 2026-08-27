@@ -1,25 +1,17 @@
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
-  background: transparent;
-  color: #ffffff;
+  background: #5F6049; 
+  color: #fff; 
   min-height: 70px;
   box-sizing: border-box;
 }
 
 .navbar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent);
-  z-index: -1;
-  pointer-events: none;
+  display: none; /* dark gradient overlay no longer needed on white bg */
 }
 
 /* ============ HAMBURGER (mobile) ============ */
@@ -27,7 +19,7 @@
   display: none;
   background: none;
   border: none;
-  color: #ffffff;
+  color: #111111;
   cursor: pointer;
   padding: 4px;
   align-items: center;
@@ -38,6 +30,7 @@
 .navbar-hamburger svg {
   width: 22px;
   height: 22px;
+  color: #fff;
 }
 
 /* ============ SHOP MEGA MENU ============ */
@@ -49,11 +42,12 @@
 }
 .navbar-shop-btn {
   min-height: 45px;
+  color: #fff;
 }
 
 .shop-mega-menu {
   position: fixed;
-  top: 60px;
+  top: 70px;
   left: 0;
   width: 100%;
   margin: auto;
@@ -246,22 +240,29 @@
   z-index: 31;
 }
 
-/* ============ LOGO (true vertical centering) ============ */
+/* ============ LOGO (clipped badge effect) ============ */
 .navbar-logo {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
-  display: inline-flex;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 125px; 
+  background: #5F6049;
+  border-radius: 50% / 40%; /* oval shape */
+  display: flex;
   align-items: center;
-  height: auto;
+  justify-content: center;
+  z-index: 15; 
+  height: 130px;
+  padding: 10px;
 }
 
 .navbar-logo-img {
-  height: 100px;
+  height: 100%;
   width: auto;
   max-width: 60vw;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
@@ -276,7 +277,7 @@
   background: none;
   border: none;
   padding: 0;
-  color: #ffffff;
+  color: #ffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -300,8 +301,8 @@
   right: -8px;
   min-width: 16px;
   height: 16px;
-  background: #ffffff;
-  color: #111111;
+  background: #ffff;
+  color: #000;
   font-size: 0.65rem;
   font-weight: 700;
   line-height: 16px;
@@ -404,12 +405,7 @@
 
   .shop-mega-menu-inner {
     padding: 2.5rem 2.5rem;
-
     gap: 1.5rem;
-  }
-
-  .navbar-logo-img {
-    /* height: 70px; */
   }
 }
 
@@ -428,10 +424,6 @@
     padding: 2rem;
   }
 
-  .navbar-logo-img {
-    /* height: 45px; */
-  }
-
   .shop-menu-image {
     display: none;
   }
@@ -448,6 +440,15 @@
   .navbar-icons {
     gap: 14px;
   }
+
+  .navbar-logo {
+    width: 85px;
+    height: 100px;
+  }
+
+  .navbar-logo-img {
+    height: 65px;
+  }
 }
 
 /* Small mobile: up to 480px */
@@ -462,17 +463,12 @@
     padding: 1.5rem;
   }
 
-  .navbar-logo-img {
-    /* height: 38px; */
-    max-width: 55vw;
-  }
   .navbar-icon-btn svg {
     width: 20px;
     height: 20px;
   }
 
   .account-dropdown {
-    /* width: calc(100vw - 2rem); */
     right: -0.5rem;
     top: calc(100% + 10px);
     max-height: 70vh;
@@ -490,5 +486,14 @@
   .mobile-menu {
     width: 100%;
     max-width: 100%;
+  }
+
+  .navbar-logo {
+    width: 70px;
+    height: 82px;
+  }
+
+  .navbar-logo-img {
+    height: 52px;
   }
 }

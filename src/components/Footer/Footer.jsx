@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -35,7 +36,7 @@ function Footer() {
           <h3 className="footer-heading">COMPANY</h3>
           <ul className="footer-list">
             <li className="footer-list-item">
-              <a href="#" className="footer-link">About Lira</a>
+              <Link to="/about" className="footer-link">About Us</Link>
             </li>
             <li className="footer-list-item">
               <a href="#" className="footer-link">Contact Us</a>
@@ -44,7 +45,7 @@ function Footer() {
               <a href="#" className="footer-link">Careers</a>
             </li>
             <li className="footer-list-item">
-              <a href="#" className="footer-link">Terms and Conditions</a>
+              <Link to="/terms-and-condition" className="footer-link">Terms and Conditions</Link>
             </li>
           </ul>
         </div>
@@ -66,7 +67,10 @@ function Footer() {
               <a href="#" className="footer-link">Track Your Order</a>
             </li>
             <li className="footer-list-item">
-              <a href="#" className="footer-link">FAQ&apos;s</a>
+              <a href="/faqs" className="footer-link">FAQ&apos;s</a>
+            </li>
+            <li className="footer-list-item">
+              <a href="/store-locator" className="footer-link">Store Locator</a>
             </li>
           </ul>
         </div>
@@ -76,9 +80,7 @@ function Footer() {
           <h3 className="footer-heading">CONTACT US</h3>
 
           <p className="footer-text">
-            D.H.A Lahore,
-            <br />
-            Pakistan.
+            Islamabad, Pakistan.
           </p>
 
           <ul className="footer-contact-list">
@@ -104,8 +106,8 @@ function Footer() {
             <li className="footer-contact-item">
               <FaEnvelope size={12} className="footer-icon" aria-hidden="true" />
               <span className="footer-contact-label">Email:</span>
-              <a href="mailto:info@lirastudioofficial.com" className="footer-link">
-                info@lirastudioofficial.com
+              <a href="mailto:maison.hues11@gmail" className="footer-link">
+                maison.hues11@gmail
               </a>
             </li>
           </ul>

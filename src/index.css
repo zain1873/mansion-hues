@@ -6,8 +6,25 @@
 @tailwind utilities;
 
 :root {
-  --theme-color: #c9a66b;
+  --theme-color: #C6CDC4;
   --theme-color-rgb: 201, 166, 107;
+}
+.theme-btn {
+  background-color: #000;
+  color: #fff;
+  width: 140px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: 1px solid transparent;
+  justify-content: center;
+  transition: .3s;
+}
+.theme-btn:hover {
+  background-color: white;
+  color: #000;
+  border: 1px solid #000;
 }
 
 * {

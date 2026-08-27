@@ -1,0 +1,272 @@
+.product-page {
+  padding: 40px 0;
+}
+
+.product-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.product-gallery {
+  flex: 1 1 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.product-gallery-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info-panel {
+  flex: 1 1 35%;
+  position: sticky;
+  top: 100px;
+  padding: 20px 0;
+}
+
+.product-page-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.product-sku {
+  display: inline-block;
+  background-color: #f2f2f2;
+  padding: 6px 12px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.product-page-price {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.product-rewards {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.product-composition,
+.product-shirt-label,
+.product-shirt-detail {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  padding: 0;
+  margin: 10px 0 20px;
+  cursor: pointer;
+}
+
+.product-details-list {
+  margin-bottom: 20px;
+  padding-left: 18px;
+  font-size: 14px;
+  color: #555;
+}
+
+.product-details-list li {
+  margin-bottom: 6px;
+}
+
+.size-label {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.size-options {
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.size-button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.size-button-active {
+  border: 1.5px solid #000;
+  font-weight: 600;
+}
+
+.product-action-row {
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.quantity-selector {
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 6px 10px;
+  gap: 14px;
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.add-to-cart-btn {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  border-radius: 30px;
+  padding: 14px 24px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+
+.wishlist-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stock-warning {
+  font-size: 13px;
+  color: #b00020;
+  margin-bottom: 16px;
+}
+
+.delivery-checklist {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #333;
+}
+
+.delivery-checklist li {
+  margin-bottom: 6px;
+}
+
+.info-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.info-card {
+  border: 1px solid #eee;
+  padding: 16px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.product-not-found {
+  padding: 100px 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.product-breadcrumb {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 20px 32px;
+  font-size: 13px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-breadcrumb a {
+  color: #999;
+  text-decoration: none;
+}
+
+.product-breadcrumb a:hover {
+  color: #000;
+}
+
+.breadcrumb-separator {
+  color: #ccc;
+}
+
+.breadcrumb-current {
+  color: #000;
+}
+
+@media (max-width: 480px) {
+  .product-breadcrumb {
+    padding: 14px 16px 0;
+    font-size: 12px;
+    height: 140px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .product-page-container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-page-container {
+    flex-direction: column;
+  }
+
+  .product-info-panel {
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .info-cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

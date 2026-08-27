@@ -21,7 +21,7 @@ function SideBy() {
       <div className="sideby-content flex flex-col items-center justify-center">
         <h1 className="sideby-title">Summer Casuals</h1>
         <p className="sideby-subtitle">Discover what's new</p>
-        <button className="sideby-btn">Shop Now</button>
+        <button className="theme-btn">Shop Now</button>
       </div>
     </section>
   );

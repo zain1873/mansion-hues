@@ -1,0 +1,142 @@
+.store-locator-page {
+  padding: 130px 20px;
+}
+
+.store-locator-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.store-locator-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 20px;
+  height: 600px;
+}
+
+/* ---------- Sidebar ---------- */
+.store-locator-sidebar {
+  width: 100%;
+  max-width: 350px;
+  overflow-y: auto;
+  border-right: 1px solid #e5e5e5;
+  padding-right: 15px;
+}
+
+.store-search-box {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.store-search-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.store-search-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.store-search-btn:hover {
+  background: #333;
+}
+
+.store-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.store-item {
+  display: flex;
+  gap: 10px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.store-pin {
+  font-size: 16px;
+  color: #e63946;
+  margin-top: 2px;
+}
+
+.store-phone-icon {
+  margin-right: 5px;
+  font-size: 13px;
+  vertical-align: -1px;
+}
+
+.store-details {
+  flex: 1;
+}
+
+.store-top-row {
+  align-items: baseline;
+}
+
+.store-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.store-distance {
+  font-size: 12px;
+  color: #888;
+  white-space: nowrap;
+}
+
+.store-address {
+  font-size: 13px;
+  color: #555;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.store-phone {
+  font-size: 13px;
+  color: #111;
+  text-decoration: underline;
+}
+
+/* ---------- Map ---------- */
+.store-locator-map {
+  flex: 1;
+  min-height: 400px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .store-locator-container {
+    height: auto;
+  }
+
+  .store-locator-sidebar {
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding-right: 0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+
+  .store-locator-map {
+    min-height: 350px;
+  }
+
+  .store-locator-title {
+    font-size: 30px;
+  }
+}
