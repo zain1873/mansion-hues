@@ -91,6 +91,8 @@ export default function ProductPage() {
   );
   const [quantity, setQuantity] = useState(1);
   const [showDetails, setShowDetails] = useState(false);
+  const [isCustomSize, setIsCustomSize] = useState(false);
+  const [customSize, setCustomSize] = useState("");
 
   // Get the addToCart function from the global cart context.
   const { addToCart } = useContext(CartContext);
@@ -184,12 +186,48 @@ export default function ProductPage() {
                       "size-button" +
                       (size === selectedSize ? " size-button-active" : "")
                     }
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() => {
+                      setSelectedSize(size);
+                      setIsCustomSize(false);
+                    }}
                   >
                     {size}
                   </button>
                 ))}
+                <button
+                  className={
+                    "size-button custom-size-btn" +
+                    (isCustomSize ? " size-button-active" : "")
+                  }
+                  onClick={() => {
+                    if (isCustomSize) {
+                      // Turning custom off -> restore default size.
+                      setCustomSize("");
+                      setSelectedSize(product.sizes[product.sizes.length - 1]);
+                      setIsCustomSize(false);
+                    } else {
+                      setSelectedSize("");
+                      setIsCustomSize(true);
+                    }
+                  }}
+                >
+                  Custom
+                </button>
               </div>
+
+              {isCustomSize && (
+                <div className="custom-size-input">
+                  <input
+                    type="text"
+                    placeholder="Enter your size"
+                    value={customSize}
+                    onChange={(e) => {
+                      setCustomSize(e.target.value);
+                      setSelectedSize(e.target.value);
+                    }}
+                  />
+                </div>
+              )}
             </div>
 
             <div className="product-action-row flex items-center">
