@@ -177,13 +177,13 @@
   display: inline-block;
   line-height: 0;
   height: 180px;
+  width: 120px;
 }
 
 .footer-logo-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  display: inline-block;
 }
 
 .footer-social-icons {
@@ -219,10 +219,6 @@
   .footer-container {
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 40px;
-  }
-
-  .footer-column-logo {
-    grid-column: 1 / -1;
   }
 
   .footer-column-newsletter {
