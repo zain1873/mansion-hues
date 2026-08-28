@@ -112,9 +112,16 @@ export default function CasualCollections() {
           </h2>
 
           <div className="casual-header-right flex items-center gap-6">
-            <a href="#" className="view-all-link">
-              VIEW ALL
-            </a>
+            <a
+            href="#"
+            className="view-all-link"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/collection/casual");
+            }}
+          >
+            VIEW ALL
+          </a>
 
             <div className="casual-arrows flex items-center gap-2">
               <button ref={prevRef} className="arrow-button" aria-label="Previous">

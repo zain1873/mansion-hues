@@ -1,21 +1,13 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 // Swiper components + styles
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-// images
-import image1 from "../../assets/cloths/image-1.webp";
-import image2 from "../../assets/cloths/image-2.webp";
-import image3 from "../../assets/cloths/image-3.webp";
-import image4 from "../../assets/cloths/image-4.webp";
-
-// hoverable images
-import imagehover1 from "../../assets/cloths/image-1-hover.webp";
-import imagehover2 from "../../assets/cloths/image-2-hover.webp";
-import imagehover3 from "../../assets/cloths/image-3-hover.webp";
-import imagehover4 from "../../assets/cloths/image-4-hover.webp";
+// Product data (ab centralized file se aa raha hai)
+import products from "../../data/products";
 
 // Our own custom CSS (colors, fonts, hover effects, media queries)
 import "./Solidscollection.css";
@@ -58,61 +50,15 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-// All product data lives in one simple array.
-// discount is optional -- only items with a discount show the badge + old price
-const products = [
-  {
-    id: 1,
-    name: "2 PC Dyed Crosshatch Suit",
-    price: "Rs.5,990.00",
-    oldPrice: null,
-    discount: null,
-    image: image1,
-    hoverImage: imagehover1,
-  },
-  {
-    id: 2,
-    name: "Dyed Dobby Cotton Shirt",
-    price: "Rs.2,993.00",
-    oldPrice: "Rs.3,990.00",
-    discount: "25% OFF",
-    image: image2,
-    hoverImage: imagehover2,
-  },
-  {
-    id: 3,
-    name: "Dyed Crosshatch Shirt",
-    price: "Rs.2,993.00",
-    oldPrice: "Rs.3,990.00",
-    discount: "25% OFF",
-    image: image3,
-    hoverImage: imagehover3,
-  },
-  {
-    id: 4,
-    name: "2 PC Dyed Arabic Lawn Suit",
-    price: "Rs.4,493.00",
-    oldPrice: "Rs.5,990.00",
-    discount: "25% OFF",
-    image: image4,
-    hoverImage: imagehover4,
-  },
-    {
-    id: 5,
-    name: "Dyed Crosshatch Shirt",
-    price: "Rs.2,993.00",
-    oldPrice: "Rs.3,990.00",
-    discount: "25% OFF",
-    image: image3,
-    hoverImage: imagehover3,
-  },
-];
-
 // One product card. Kept as its own small component so the
 // main component stays easy to read.
-function ProductCard({ product }) {
+function ProductCard({ product, onCardClick }) {
   return (
-    <div className="sld-card flex flex-col w-full">
+    <div
+      className="sld-card flex flex-col w-full"
+      onClick={() => onCardClick(product.id)}
+      style={{ cursor: "pointer" }}
+    >
       {/* Image wrapper handles the hover image-swap + discount badge */}
       <div className="sld-img-wrap relative w-full">
         {/* Discount badge, top-left corner, only shown if a discount exists */}
@@ -132,7 +78,11 @@ function ProductCard({ product }) {
         />
 
         {/* Plus button, only visible on hover (see CSS) */}
-        <button className="sld-plus-btn absolute" aria-label="Quick add">
+        <button
+          className="sld-plus-btn absolute"
+          aria-label="Quick add"
+          onClick={(e) => e.stopPropagation()}
+        >
           <PlusIcon />
         </button>
       </div>
@@ -160,23 +110,46 @@ export default function SolidsCollection() {
   // Refs so our custom arrow buttons can control the Swiper slider
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Centralized data se sirf "solids" category ke products nikalna
+  const solidProducts = products.filter((p) => p.category === "solids");
+
+  const handleCardClick = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <section className="sld-section w-full">
       <div className="sld-container w-full max-w-screen-2xl mx-auto px-4">
-        {/* Section title */}
-        <h2 className="sld-title">
-          Our <span className="sld-title-italic">Solids</span> Collection
-        </h2>
+        {/* Header row: title on the left, "view all" + arrows on the right */}
+        <div className="sld-header flex items-center justify-between flex-wrap gap-4">
+          <h2 className="sld-title">
+            Our <span className="sld-title-italic">Solids</span> Collection
+          </h2>
 
-        {/* Custom prev/next arrows sit above the slider on the right */}
-        <div className="sld-arrows flex items-center justify-end gap-2">
-          <button ref={prevRef} className="sld-arrow-btn" aria-label="Previous">
-            <ArrowLeftIcon />
-          </button>
-          <button ref={nextRef} className="sld-arrow-btn" aria-label="Next">
-            <ArrowRightIcon />
-          </button>
+          <div className="sld-header-right flex items-center gap-6">
+            
+              <a
+              href="#"
+              className="view-all-link"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/collection/solids");
+              }}
+            >
+              VIEW ALL
+            </a>
+
+            <div className="sld-arrows flex items-center gap-2">
+              <button ref={prevRef} className="sld-arrow-btn" aria-label="Previous">
+                <ArrowLeftIcon />
+              </button>
+              <button ref={nextRef} className="sld-arrow-btn" aria-label="Next">
+                <ArrowRightIcon />
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Swiper slider showing all product cards */}
@@ -185,7 +158,6 @@ export default function SolidsCollection() {
           spaceBetween={0}
           slidesPerView={4}
           onBeforeInit={(swiper) => {
-            // Connect our custom arrow buttons to Swiper's navigation
             swiper.params.navigation.prevEl = prevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
           }}
@@ -194,7 +166,6 @@ export default function SolidsCollection() {
             nextEl: nextRef.current,
           }}
           breakpoints={{
-            // Responsive slide counts (handled by Swiper itself)
             0: { slidesPerView: 1, spaceBetween: 0 },
             640: { slidesPerView: 2, spaceBetween: 0 },
             1024: { slidesPerView: 3, spaceBetween: 0 },
@@ -202,9 +173,9 @@ export default function SolidsCollection() {
           }}
           className="sld-swiper"
         >
-          {products.map((product) => (
+          {solidProducts.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard product={product} onCardClick={handleCardClick} />
             </SwiperSlide>
           ))}
         </Swiper>

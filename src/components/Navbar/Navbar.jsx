@@ -1,15 +1,22 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./Navbar.css";
 import navLogo from "../../assets/nav-logo.png";
 import lookbookImg from "../../assets/banner.jpg";
 import CartDrawer from "../Cartdrawer/CartDrawer";
+import CartContext from "../../context/CartContext";
+import AuthContext from "../../context/AuthContext";
 
 function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false); // NEW: controls cart drawer
+
+  // Pull cart info (badge count + open/close drawer) from global context.
+  const { cartCount, setIsCartOpen } = useContext(CartContext);
+
+  // Pull auth info (current user + modal opener + logout) from global context.
+  const { user, setIsAuthModalOpen, logout } = useContext(AuthContext);
 
   const accountRef = useRef(null);
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -82,25 +89,6 @@ function Navbar() {
               <a href="/fabric/silk">Silk</a>
             </div>
 
-            {/* <div className="shop-menu-col">
-              <h4>By Season</h4>
-              <a href="/season/all-year">All Year Round</a>
-              <a href="/season/summer">Summer</a>
-              <a href="/season/fall-25">Fall Collection '25</a>
-              <a href="/season/winter">Winter Collection</a>
-            </div> */}
-{/* 
-            <div className="shop-menu-col">
-              <h4>By Style</h4>
-              <a href="/style/everyday">Everyday Wear</a>
-              <a href="/style/festive">Festive Wear</a>
-              <a href="/style/dinner">Dinner Wear</a>
-              <a href="/style/co-ord">Co-ord sets</a>
-              <a href="/style/easterns">Easterns</a>
-              <a href="/style/westerns">Westerns</a>
-              <a href="/style/kaftaans">Kaftaans</a>
-            </div> */}
-
             <div className="shop-menu-image">
               <img src={lookbookImg} alt="Lookbook" />
             </div>
@@ -137,7 +125,15 @@ function Navbar() {
           <button
             className="navbar-icon-btn"
             aria-label="Account"
-            onClick={() => setAccountOpen((v) => !v)}
+            onClick={() => {
+              // Agar user login nahi hai, seedha modal khol dein
+              // (dropdown ki zaroorat nahi login ke liye)
+              if (!user) {
+                setIsAuthModalOpen(true);
+              } else {
+                setAccountOpen((v) => !v);
+              }
+            }}
           >
             <svg viewBox="0 0 24 24" width="20" height="20">
               <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" fill="none" />
@@ -145,16 +141,15 @@ function Navbar() {
             </svg>
           </button>
 
-          <div className={`account-dropdown ${accountOpen ? "open" : ""}`}>
-            <button className="account-login-btn">LOGIN</button>
-            <p className="account-register-text">
-              NEW USER? <a href="/register">REGISTER NOW</a>
-            </p>
-            <div className="account-language">
-              <h4>SELECT LANGUAGE</h4>
-              <button className="account-lang-btn">ENGLISH</button>
+          {/* Logged-in user ke liye dropdown (greeting + logout) */}
+          {user && (
+            <div className={`account-dropdown ${accountOpen ? "open" : ""}`}>
+              <p className="account-greeting">Hi, {user.name}</p>
+              <button className="account-login-btn" onClick={logout}>
+                LOGOUT
+              </button>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Wishlist icon with count */}
@@ -174,13 +169,14 @@ function Navbar() {
         <button
           className="navbar-icon-btn navbar-icon-with-badge"
           aria-label="Cart"
-          onClick={() => setCartOpen(true)}
+          onClick={() => setIsCartOpen(true)}
         >
           <svg viewBox="0 0 24 24" width="20" height="20">
             <path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" strokeWidth="1.5" fill="none" />
             <path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" strokeWidth="1.5" fill="none" />
           </svg>
-          <span className="navbar-badge">0</span>
+          {/* Show the badge only when there is at least one item in the cart */}
+          {cartCount > 0 && <span className="navbar-badge">{cartCount}</span>}
         </button>
       </div>
 
@@ -259,9 +255,7 @@ function Navbar() {
           }}
         />
       )}
-
-      {/* Cart Drawer - slides in from the right */}
-      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+      <CartDrawer />
     </nav>
   );
 }

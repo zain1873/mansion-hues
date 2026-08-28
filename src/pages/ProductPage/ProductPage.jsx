@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
 import products from "../../data/products";
+import CartContext from "../../context/CartContext";
 
 import "./ProductPage.css";
 
@@ -91,6 +92,9 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [showDetails, setShowDetails] = useState(false);
 
+  // Get the addToCart function from the global cart context.
+  const { addToCart } = useContext(CartContext);
+
   if (!product) {
     return (
       <>
@@ -103,6 +107,12 @@ export default function ProductPage() {
 
   const increaseQty = () => setQuantity((q) => q + 1);
   const decreaseQty = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
+
+  // Add the current product (with the selected size & quantity) to the
+  // cart. The cart context also opens the drawer for us after adding.
+  const handleAddToCart = () => {
+    addToCart(product, selectedSize, quantity);
+  };
 
   return (
     <>
@@ -201,7 +211,12 @@ export default function ProductPage() {
                 </button>
               </div>
 
-              <button className="add-to-cart-btn theme-btn">ADD TO CART</button>
+              <button
+                className="add-to-cart-btn theme-btn"
+                onClick={handleAddToCart}
+              >
+                ADD TO CART
+              </button>
 
               <button className="wishlist-btn" aria-label="Add to wishlist">
                 <HeartIcon />

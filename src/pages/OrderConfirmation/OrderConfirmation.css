@@ -1,0 +1,199 @@
+/* ============ ORDER CONFIRMATION PAGE ============ */
+.order-confirmation-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 150px 20px 60px; /* top padding clears the fixed navbar */
+  box-sizing: border-box;
+}
+
+/* ---- Success message at the top ---- */
+.order-success {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.order-success-icon {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: #e8f5e9; /* soft green circle */
+  color: #2e7d32; /* green checkmark */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-success-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.order-number {
+  font-size: 1rem;
+  color: #555555;
+}
+
+/* ---- Two-column layout: details left, total right ---- */
+.order-confirmation-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.order-details {
+  flex: 1 1 65%;
+}
+
+.order-summary {
+  flex: 1 1 30%;
+  position: sticky;
+  top: 150px;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+}
+
+/* ---- Sections ---- */
+.order-section {
+  margin-bottom: 2rem;
+}
+
+.order-section-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  margin: 0 0 1rem;
+}
+
+/* ---- Ordered items list ---- */
+.order-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.order-item-img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  background: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.order-item-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.order-item-name {
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.order-item-size {
+  font-size: 0.85rem;
+  color: #555555;
+  margin: 0 0 0.35rem;
+}
+
+.order-item-meta {
+  font-size: 0.85rem;
+  color: #999999;
+  margin: 0;
+}
+
+.order-item-total {
+  font-weight: 700;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* ---- Shipping address ---- */
+.order-address {
+  font-style: normal;
+  line-height: 1.6;
+  color: #333333;
+}
+
+.order-address p {
+  margin: 0;
+}
+
+/* ---- Order summary ---- */
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+}
+
+.order-summary-total {
+  border-top: 1px solid #eee;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.order-continue-btn {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+  padding: 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  margin-top: 1.25rem;
+}
+
+/* ============ RESPONSIVE ============ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .order-confirmation-layout {
+    gap: 2rem;
+  }
+}
+
+/* Mobile/tablet: stack the summary above the details */
+@media (max-width: 640px) {
+  .order-confirmation-layout {
+    flex-direction: column;
+  }
+
+  .order-summary {
+    order: -1;
+    position: static;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .order-item {
+    flex-wrap: wrap;
+  }
+
+  .order-item-total {
+    margin-left: auto;
+  }
+
+  .order-continue-btn {
+    padding: 1.1rem;
+    font-size: 1rem;
+  }
+}

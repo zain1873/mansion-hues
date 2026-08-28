@@ -1,0 +1,337 @@
+/* ============ CHECKOUT PAGE ============ */
+.checkout-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 150px 20px 60px; /* top padding clears the fixed navbar */
+  box-sizing: border-box;
+}
+
+.checkout-title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+}
+
+/* Two-column layout: form left, summary sticky on the right */
+.checkout-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.checkout-form {
+  flex: 1 1 60%;
+}
+
+.checkout-summary {
+  flex: 1 1 32%;
+  position: sticky;
+  top: 150px;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+}
+
+/* ---- Form sections ---- */
+.checkout-section {
+  margin-bottom: 2rem;
+}
+
+.checkout-section h2 {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  margin: 0 0 1rem;
+}
+
+.checkout-form label {
+  display: block;
+  font-size: 0.85rem;
+  color: #555555;
+  margin-bottom: 1rem;
+}
+
+.checkout-form input[type="text"],
+.checkout-form input[type="email"],
+.checkout-form input[type="tel"] {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.checkout-form input:focus {
+  outline: none;
+  border-color: #111111;
+}
+
+.checkout-form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.checkout-form-row label {
+  flex: 1 1 50%;
+}
+
+/* ---- Radio buttons for payment method ---- */
+.checkout-form .checkout-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid #e0e0e0;
+  padding: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 0.75rem;
+}
+
+.checkout-form .checkout-radio input {
+  width: auto;
+  margin: 0;
+}
+
+/* ---- Place order button ---- */
+.checkout-place-btn {
+  width: 100%;
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.checkout-place-btn:hover {
+  background: #333333;
+}
+
+/* ---- Order summary ---- */
+.checkout-summary h2 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.25rem;
+}
+.checkout-radio-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkout-radio-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkout-card-brands {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkout-brand-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.checkout-brand-visa {
+  background: #1a1f71;
+}
+
+.checkout-brand-mastercard {
+  background: #16171a;
+  gap: 2px;
+}
+
+.mc-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.mc-circle-red {
+  background: #eb001b;
+  margin-right: -4px;
+}
+
+.mc-circle-yellow {
+  background: #f79e1b;
+  opacity: 0.9;
+}
+
+.checkout-brand-amex {
+  background: #2e77bc;
+  font-size: 8px;
+  line-height: 1;
+  text-align: center;
+}
+
+.checkout-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 18px;
+  background: #f7f7f7;
+  border-radius: 6px;
+}
+
+.checkout-card-input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-card-input-wrapper input {
+  padding: 12px 40px 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.checkout-card-input-wrapper input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.checkout-card-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .checkout-radio-card {
+    align-items: flex-start;
+  }
+}
+.checkout-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+}
+
+.checkout-summary-items {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.checkout-summary-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.checkout-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+}
+
+.checkout-summary-total {
+  border-top: 1px solid #eee;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ---- Success screen after placing an order ---- */
+.checkout-success {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.checkout-success h1 {
+  font-family: "Georgia", "Times New Roman", serif;
+  margin-bottom: 0.75rem;
+}
+
+.checkout-success p {
+  color: #555555;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-success a {
+  display: inline-block;
+  background: #111111;
+  color: #ffffff;
+  padding: 0.9rem 2.25rem;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.checkout-success a:hover {
+  background: #333333;
+}
+
+/* ============ RESPONSIVE ============ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .checkout-layout {
+    gap: 2rem;
+  }
+}
+
+/* Mobile/tablet: move the order summary ABOVE the form
+   (using order: -1) instead of letting it stack awkwardly below. */
+@media (max-width: 640px) {
+  .checkout-layout {
+    flex-direction: column;
+  }
+
+  .checkout-summary {
+    order: -1;
+    position: static;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .checkout-form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Bigger, touch-friendly buttons on mobile */
+  .checkout-place-btn {
+    padding: 1.15rem;
+    font-size: 1rem;
+  }
+}

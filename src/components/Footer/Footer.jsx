@@ -54,14 +54,14 @@ function Footer() {
         <div className="footer-column">
           <h3 className="footer-heading">PAGES</h3>
           <ul className="footer-list">
-            <li className="footer-list-item">
+            {/* <li className="footer-list-item">
               <a href="#" className="footer-link">Shipping &amp; Delivery</a>
+            </li> */}
+            <li className="footer-list-item">
+              <Link to="/exchange-policy" className="footer-link">Exchange Policy</Link>
             </li>
             <li className="footer-list-item">
-              <a href="#" className="footer-link">Exchange Policy</a>
-            </li>
-            <li className="footer-list-item">
-              <a href="#" className="footer-link">Privacy Policy</a>
+              <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
             </li>
             <li className="footer-list-item">
               <a href="#" className="footer-link">Track Your Order</a>

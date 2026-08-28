@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaLeaf, FaGem, FaUsers, FaShirt } from "react-icons/fa6";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
-import heroBg from "../assets/banner.jpg";
-import storyImg from "../assets/banner-sunny.webp";
-import detailImg from "../assets/sunnyweather.webp";
-import clothImg from "../assets/cloths/image-1.webp";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
+import heroBg from "../../assets/banner.jpg";
+import storyImg from "../../assets/banner-sunny.webp";
+import detailImg from "../../assets/sunnyweather.webp";
+import clothImg from "../../assets/cloths/image-1.webp";
 import "./About.css";
 
 // ---- Value cards data ----

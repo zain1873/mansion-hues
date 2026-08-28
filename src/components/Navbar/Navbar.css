@@ -32,17 +32,22 @@
   height: 22px;
   color: #fff;
 }
+.account-greeting {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
 
 /* ============ SHOP MEGA MENU ============ */
 .navbar-shop-wrapper {
   position: static;
 }
 .navbar-shop-btn:hover {
-  color: #000;
+  text-decoration: underline;
 }
 .navbar-shop-btn {
   min-height: 45px;
-  color: #fff;
+  color: #000;
 }
 
 .shop-mega-menu {
@@ -92,7 +97,6 @@
 .shop-menu-col a:hover {
   opacity: 0.6;
   text-decoration: underline;
-  color: var(--theme-color);
 }
 .shop-menu-image {
   width: 500px;
@@ -288,7 +292,7 @@
 .navbar-icon-btn svg {
   width: 30px;
   height: 30px;
-  color: currentColor;
+  color: #000;
 }
 
 .navbar-icon-with-badge {

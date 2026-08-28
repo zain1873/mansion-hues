@@ -1,32 +1,57 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CartDrawer.css";
+import CartContext from "../../context/CartContext";
 
-function CartDrawer({ isOpen, onClose, cartItems = [], onContinueShopping }) {
+
+const parsePrice = (price) => {
+  const cleaned = String(price)
+    .replace(/Rs\.?/gi, "")   
+    .replace(/,/g, "")       
+  return parseFloat(cleaned) || 0;
+};
+
+function CartDrawer() {
+  const {
+    cartItems,
+    updateQuantity,
+    removeFromCart,
+    isCartOpen,
+    setIsCartOpen,
+  } = useContext(CartContext);
+
   const itemCount = cartItems.length;
 
-  const handleContinueShopping = () => {
-    if (onContinueShopping) onContinueShopping();
-    onClose();
+  const navigate = useNavigate();
+
+  const closeCart = () => setIsCartOpen(false);
+
+  const goToCart = () => {
+    closeCart();
+    navigate("/cart");
   };
 
-  // Calculate subtotal only when items exist
+  const goToCheckout = () => {
+    closeCart();
+    navigate("/checkout");
+  };
+
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + parsePrice(item.price) * item.quantity,
     0
   );
 
   return (
     <>
-      {/* Overlay / backdrop - clicking it closes the drawer */}
       <div
-        className={`cart-drawer-overlay ${isOpen ? "open" : ""}`}
-        onClick={onClose}
+        className={`cart-drawer-overlay ${isCartOpen ? "open" : ""}`}
+        onClick={closeCart}
       />
 
       {/* Drawer */}
       <aside
-        className={`cart-drawer ${isOpen ? "open" : ""}`}
-        aria-hidden={!isOpen}
+        className={`cart-drawer ${isCartOpen ? "open" : ""}`}
+        aria-hidden={!isCartOpen}
       >
         {/* Header */}
         <div className="cart-drawer-header">
@@ -34,7 +59,7 @@ function CartDrawer({ isOpen, onClose, cartItems = [], onContinueShopping }) {
           <button
             className="cart-drawer-close"
             aria-label="Close cart"
-            onClick={onClose}
+            onClick={closeCart}
           >
             ✕
           </button>
@@ -67,8 +92,8 @@ function CartDrawer({ isOpen, onClose, cartItems = [], onContinueShopping }) {
                 You don't have any items in your cart.
               </p>
               <button
-                className="cart-drawer-continue-btn"
-                onClick={handleContinueShopping}
+                className="cart-drawer-continue-btn theme-btn"
+                onClick={closeCart}
               >
                 CONTINUE SHOPPING
               </button>
@@ -78,7 +103,12 @@ function CartDrawer({ isOpen, onClose, cartItems = [], onContinueShopping }) {
             <>
               <ul className="cart-drawer-items">
                 {cartItems.map((item) => (
-                  <li className="cart-drawer-item" key={item.id}>
+                  // The key uses id + size so the same product in two
+                  // different sizes shows up as two separate lines.
+                  <li
+                    className="cart-drawer-item"
+                    key={`${item.id}-${item.size}`}
+                  >
                     <img
                       src={item.image}
                       alt={item.name}
@@ -86,13 +116,45 @@ function CartDrawer({ isOpen, onClose, cartItems = [], onContinueShopping }) {
                     />
                     <div className="cart-drawer-item-info">
                       <p className="cart-drawer-item-name">{item.name}</p>
-                      <p className="cart-drawer-item-qty">
-                        Qty: {item.quantity}
-                      </p>
+                      <p className="cart-drawer-item-size">Size: {item.size}</p>
+
+                      {/* Quantity + / - controls */}
+                      <div className="cart-drawer-qty-controls">
+                        <button
+                          className="cart-drawer-qty-btn"
+                          aria-label="Decrease quantity"
+                          onClick={() =>
+                            updateQuantity(item.id, item.size, item.quantity - 1)
+                          }
+                        >
+                          −
+                        </button>
+                        <span className="cart-drawer-qty-value">
+                          {item.quantity}
+                        </span>
+                        <button
+                          className="cart-drawer-qty-btn"
+                          aria-label="Increase quantity"
+                          onClick={() =>
+                            updateQuantity(item.id, item.size, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
-                    <p className="cart-drawer-item-price">
-                      Rs. {(item.price * item.quantity).toLocaleString()}
-                    </p>
+
+                    <div className="cart-drawer-item-right">
+                      <p className="cart-drawer-item-price">{item.price}</p>
+                      {/* Remove this line from the cart */}
+                      <button
+                        className="cart-drawer-remove-btn"
+                        aria-label="Remove item"
+                        onClick={() => removeFromCart(item.id, item.size)}
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -102,14 +164,19 @@ function CartDrawer({ isOpen, onClose, cartItems = [], onContinueShopping }) {
                   <span>Subtotal</span>
                   <span>Rs. {subtotal.toLocaleString()}</span>
                 </div>
-                <button className="cart-drawer-checkout-btn">
+
+                {/* VIEW CART and CHECKOUT navigate to their pages. */}
+                <button
+                  className="cart-drawer-checkout-btn"
+                  onClick={goToCheckout}
+                >
                   CHECKOUT
                 </button>
                 <button
-                  className="cart-drawer-continue-btn cart-drawer-continue-btn-outline"
-                  onClick={handleContinueShopping}
+                  className="cart-drawer-view-cart-btn"
+                  onClick={goToCart}
                 >
-                  CONTINUE SHOPPING
+                  VIEW CART
                 </button>
               </div>
             </>
