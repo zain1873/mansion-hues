@@ -103,14 +103,14 @@
 }
 
 .hero-subtitle {
-  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-family: var(--theme-font);
   font-size: 1.4rem;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
 .hero-title {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-size: 5rem;
   font-weight: 400;
   margin: 0;

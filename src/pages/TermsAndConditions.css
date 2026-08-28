@@ -14,7 +14,7 @@
 }
 
 .terms-block-num {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-style: italic;
   font-size: 18px;
   color: #c9a66b;
@@ -22,7 +22,7 @@
 }
 
 .terms-block-title {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-weight: 500;
   font-size: 26px;
   line-height: 1.25;
@@ -99,7 +99,7 @@
 }
 
 .terms-page {
-  font-family: "Jost", sans-serif;
+  font-family: var(--theme-font);
   color: #1a1a1a;
   background-color: #f5f5f4;
   -webkit-font-smoothing: antialiased;
@@ -132,7 +132,7 @@
 }
 
 .terms-hero-title {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-weight: 500;
   font-size: 46px;
   line-height: 1.1;

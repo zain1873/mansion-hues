@@ -16,7 +16,7 @@
 /* ---------- Section title ---------- */
 
 .sld-title {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-size: 40px;
   font-weight: 400;
   color: #1a1a1a;
@@ -26,7 +26,7 @@
 
 .sld-title-italic {
   font-style: italic;
-  font-family: "Georgia", serif;
+  font-family: var(--theme-font);
 }
 
 /* ---------- Arrows row (above the slider, right aligned) ---------- */

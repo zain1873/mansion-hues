@@ -26,7 +26,7 @@
 }
 
 .sideby-title {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-size: 48px;
   font-weight: 400;
   color: #1a1a1a;
@@ -88,7 +88,7 @@
   }
 
   .sideby-video-wrap {
-    height: 320px;
+    height: 520px;
   }
 
   .sideby-content {
@@ -108,7 +108,7 @@
 /* Small mobile */
 @media (max-width: 480px) {
   .sideby-video-wrap {
-    height: 260px;
+    height: 400px;
   }
 
   .sideby-title {

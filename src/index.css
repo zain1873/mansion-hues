@@ -8,7 +8,7 @@
 :root {
   --theme-color: #C6CDC4;
   --theme-color-rgb: 201, 166, 107;
-  --theme-font: 'Montserrat', sans-serif;
+  --theme-font: 'Montserrat', sans-serif !important;
 }
 .theme-btn {
   background-color: #000;

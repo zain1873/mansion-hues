@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap");
 
 .about-page {
-  font-family: "Jost", sans-serif;
+  font-family: var(--theme-font);
   color: #1a1a1a;
   background-color: #f5f5f4;
   -webkit-font-smoothing: antialiased;
@@ -28,7 +28,7 @@
 
 /* Shared serif headings */
 .about-title {
-  font-family: "Cormorant Garamond", "Georgia", serif;
+  font-family: var(--theme-font);
   font-weight: 600;
   font-size: 42px;
   line-height: 1.15;
@@ -84,7 +84,7 @@
 }
 
 .about-hero-title {
-  font-family: "Cormorant Garamond", "Georgia", serif;
+  font-family: var(--theme-font);
   font-weight: 600;
   font-size: 62px;
   line-height: 1.05;
@@ -115,7 +115,7 @@
   border: 1px solid #c9a66b;
   background-color: #c9a66b;
   color: #1a1a1a;
-  font-family: "Jost", sans-serif;
+  font-family: var(--theme-font);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -261,7 +261,7 @@
 }
 
 .about-quote-mark {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--theme-font);
   font-size: 72px;
   line-height: 0.6;
   color: #c9a66b;
@@ -269,7 +269,7 @@
 }
 
 .about-quote-text {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--theme-font);
   font-weight: 500;
   font-size: 30px;
   font-style: italic;
@@ -428,7 +428,7 @@
 }
 
 .about-value-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--theme-font);
   font-weight: 600;
   font-size: 21px;
   margin: 0 0 10px;
@@ -467,7 +467,7 @@
 }
 
 .about-stat-value {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--theme-font);
   font-weight: 600;
   font-size: 52px;
   line-height: 1;
@@ -501,7 +501,7 @@
 }
 
 .about-cta-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--theme-font);
   font-weight: 600;
   font-size: 44px;
   line-height: 1.15;

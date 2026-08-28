@@ -7,7 +7,7 @@
 }
 
 .checkout-title {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -277,7 +277,7 @@
 }
 
 .checkout-success h1 {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--theme-font);
   margin-bottom: 0.75rem;
 }
 

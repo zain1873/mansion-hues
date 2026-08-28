@@ -7,6 +7,9 @@ import Footer from "../../components/Footer/Footer";
 import products from "../../data/products";
 import CartContext from "../../context/CartContext";
 
+// Size guide reference image — apni image is naam se assets folder mein rakh dein
+import sizeGuideImg from "../../assets/size-guide.png";
+
 import "./ProductPage.css";
 
 const MinusIcon = () => (
@@ -79,6 +82,20 @@ const ReturnIcon = () => (
   </svg>
 );
 
+// Dummy size chart data — abhi static hai, baad mein backend se
+// har product ke apne measurements aa sakte hain agar zaroorat pare.
+// Filhaal generic chart hai jaisa reference image mein hai.
+const sizeMeasurements = {
+  XS: { bodyLength: 56, chestWidth: 50, sleeveLength: 76 },
+  S: { bodyLength: 58, chestWidth: 56, sleeveLength: 78 },
+  M: { bodyLength: 60, chestWidth: 60, sleeveLength: 80 },
+  L: { bodyLength: 62, chestWidth: 64, sleeveLength: 82 },
+  XL: { bodyLength: 64, chestWidth: 68, sleeveLength: 84 },
+};
+
+// CM ko approximate INCH mein convert karne ka helper.
+const cmToInch = (cm) => (cm / 2.54).toFixed(0);
+
 export default function ProductPage() {
   const { id } = useParams();
 
@@ -93,6 +110,12 @@ export default function ProductPage() {
   const [showDetails, setShowDetails] = useState(false);
   const [isCustomSize, setIsCustomSize] = useState(false);
   const [customSize, setCustomSize] = useState("");
+
+  // Size Guide popup ka open/close state, aur usme currently selected size tab.
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
+  const [guideSize, setGuideSize] = useState(
+    product ? product.sizes[0] : "S"
+  );
 
   // Get the addToCart function from the global cart context.
   const { addToCart } = useContext(CartContext);
@@ -115,6 +138,9 @@ export default function ProductPage() {
   const handleAddToCart = () => {
     addToCart(product, selectedSize, quantity);
   };
+
+  // Currently selected size ka measurement data (agar mil jaye)
+  const currentMeasurements = sizeMeasurements[guideSize];
 
   return (
     <>
@@ -175,9 +201,28 @@ export default function ProductPage() {
             )}
 
             <div className="product-size-section">
-              <p className="size-label">
-                SIZE <strong>{selectedSize}</strong>
-              </p>
+              {/* Size label + Size Guide link ek row mein */}
+              <div className="size-label-row flex items-center justify-between">
+                <p className="size-label">
+                  SIZE <strong>{selectedSize}</strong>
+                </p>
+                <button
+                  type="button"
+                  className="size-guide-link"
+                  onClick={() => {
+                    // Guide open karte waqt, abhi ka selected size hi dikhayein (agar valid ho)
+                    setGuideSize(
+                      product.sizes.includes(selectedSize)
+                        ? selectedSize
+                        : product.sizes[0]
+                    );
+                    setShowSizeGuide(true);
+                  }}
+                >
+                  SIZE GUIDE
+                </button>
+              </div>
+
               <div className="size-options flex">
                 {product.sizes.map((size) => (
                   <button
@@ -291,6 +336,93 @@ export default function ProductPage() {
           </div>
         </div>
       </section>
+
+      {/* ================= SIZE GUIDE MODAL ================= */}
+      {showSizeGuide && (
+        <div
+          className="size-guide-overlay"
+          onClick={() => setShowSizeGuide(false)}
+        >
+          <div
+            className="size-guide-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="size-guide-close"
+              aria-label="Close size guide"
+              onClick={() => setShowSizeGuide(false)}
+            >
+              ✕
+            </button>
+
+            <div className="size-guide-content">
+              {/* LEFT: title, size tabs, measurements table */}
+              <div className="size-guide-left">
+                <h2 className="size-guide-title">Size Guide</h2>
+
+                <p className="size-guide-select-label">Select size</p>
+                <div className="size-guide-tabs">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size}
+                      className={
+                        "size-guide-tab" +
+                        (size === guideSize ? " size-guide-tab-active" : "")
+                      }
+                      onClick={() => setGuideSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+
+                {currentMeasurements ? (
+                  <table className="size-guide-table">
+                    <thead>
+                      <tr>
+                        <th>MEASUREMENTS</th>
+                        <th>CM</th>
+                        <th>INCH</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Body Length</td>
+                        <td>{currentMeasurements.bodyLength}</td>
+                        <td>{cmToInch(currentMeasurements.bodyLength)}</td>
+                      </tr>
+                      <tr>
+                        <td>Chest Width</td>
+                        <td>{currentMeasurements.chestWidth}</td>
+                        <td>{cmToInch(currentMeasurements.chestWidth)}</td>
+                      </tr>
+                      <tr>
+                        <td>Sleeve Length From Neck Seam</td>
+                        <td>{currentMeasurements.sleeveLength}</td>
+                        <td>{cmToInch(currentMeasurements.sleeveLength)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                ) : (
+                  <p className="size-guide-no-data">
+                    Measurements not available for this size.
+                  </p>
+                )}
+
+                <p className="size-guide-note">
+                  Note: The size guide refers to product measurements which
+                  may slightly vary according to design.
+                </p>
+              </div>
+
+              {/* RIGHT: reference measurement image */}
+              <div className="size-guide-right">
+                <img src={sizeGuideImg} alt="Size guide measurement reference" />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
