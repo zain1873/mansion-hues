@@ -5,7 +5,23 @@
 //   const { cartItems, addToCart, ... } = useContext(CartContext);
 // ============================================================
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+
+// Key used to store the cart in localStorage, so the cart survives page
+// refreshes / full page navigations (not just route changes).
+const CART_STORAGE_KEY = "maison-hues-cart";
+
+// Read the saved cart from localStorage. Wrapped in try/catch so that a
+// missing, corrupted, or unreadable value (e.g. storage blocked) simply
+// falls back to an empty cart instead of crashing the app.
+const loadCartFromStorage = () => {
+  try {
+    const raw = localStorage.getItem(CART_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+};
 
 // 1) Create the context. This is just an empty "pipe" — the Provider
 //    below is what actually gives it data to share.
@@ -17,7 +33,19 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   // Every item in the cart has this shape:
   //   { id, name, price, image, size, quantity }
-  const [cartItems, setCartItems] = useState([]);
+  // Initialise from localStorage (if anything was saved earlier) so the cart
+  // persists across page refreshes / full page navigations.
+  const [cartItems, setCartItems] = useState(loadCartFromStorage);
+
+  // Every time the cart changes, save it back to localStorage. Wrapped in
+  // try/catch so storage errors (private mode, quota, etc.) never break the app.
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+    } catch {
+      // Ignore: cart still works in-memory even if persistence fails.
+    }
+  }, [cartItems]);
 
   // Whether the cart drawer is currently open or closed.
   const [isCartOpen, setIsCartOpen] = useState(false);

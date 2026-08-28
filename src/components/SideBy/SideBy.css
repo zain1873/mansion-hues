@@ -108,7 +108,7 @@
 /* Small mobile */
 @media (max-width: 480px) {
   .sideby-video-wrap {
-    height: 400px;
+    height: 500px;
   }
 
   .sideby-title {

@@ -14,8 +14,7 @@ function BestSellers() {
       {/* Header row: title on the left, "View all" button on the right */}
       <div className="best-sellers-header">
         <div>
-          <span className="best-sellers-eyebrow">Curated Edit</span>
-          <h2 className="best-sellers-title">Best Sellers</h2>
+          <h2 className="best-sellers-title">Best <span className="casual-title-italic">Sellers</span> </h2>
         </div>
         <button className="view-all-btn">
           <span>View all</span>
