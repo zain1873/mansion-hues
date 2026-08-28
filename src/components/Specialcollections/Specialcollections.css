@@ -15,7 +15,7 @@
    Header (title + arrows)
 =========================== */
 .collections-title {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-size: 36px;
   font-weight: 500;
   color: #1a1a1a;
@@ -86,7 +86,7 @@
 
 .collection-label {
   margin-top: 16px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font);
   font-size: 22px;
   color: #1a1a1a;
 }
