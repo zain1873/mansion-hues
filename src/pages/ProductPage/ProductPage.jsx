@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 
 import products from "../../data/products";
 import CartContext from "../../context/CartContext";
+import WishlistContext from "../../context/WishlistContext";
 
 // Size guide reference image — apni image is naam se assets folder mein rakh dein
 import sizeGuideImg from "../../assets/size-guide.png";
@@ -29,12 +30,15 @@ const PlusIcon = () => (
   </svg>
 );
 
-const HeartIcon = () => (
+// Heart icon for the wishlist button.
+// When `filled` is true it renders a solid heart (product is in the wishlist),
+// otherwise it renders an outline heart.
+const HeartIcon = ({ filled }) => (
   <svg
     viewBox="0 0 24 24"
     width="18"
     height="18"
-    fill="none"
+    fill={filled ? "black" : "none"}
     stroke="black"
     strokeWidth="1.8"
     strokeLinecap="round"
@@ -119,6 +123,11 @@ export default function ProductPage() {
 
   // Get the addToCart function from the global cart context.
   const { addToCart } = useContext(CartContext);
+
+  // Get wishlist helpers from the global wishlist context:
+  // toggleWishlist adds/removes the product, isInWishlist tells us whether the
+  // heart should be shown filled (already saved) or as an outline.
+  const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
 
   if (!product) {
     return (
@@ -210,7 +219,6 @@ export default function ProductPage() {
                   type="button"
                   className="size-guide-link"
                   onClick={() => {
-                    // Guide open karte waqt, abhi ka selected size hi dikhayein (agar valid ho)
                     setGuideSize(
                       product.sizes.includes(selectedSize)
                         ? selectedSize
@@ -301,8 +309,19 @@ export default function ProductPage() {
                 ADD TO CART
               </button>
 
-              <button className="wishlist-btn" aria-label="Add to wishlist">
-                <HeartIcon />
+              <button
+                className={
+                  "wishlist-btn" +
+                  (isInWishlist(product.id) ? " wishlist-btn-active" : "")
+                }
+                aria-label={
+                  isInWishlist(product.id)
+                    ? "Remove from wishlist"
+                    : "Add to wishlist"
+                }
+                onClick={() => toggleWishlist(product)}
+              >
+                <HeartIcon filled={isInWishlist(product.id)} />
               </button>
             </div>
 

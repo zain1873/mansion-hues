@@ -63,9 +63,9 @@ function Footer() {
             <li className="footer-list-item">
               <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
             </li>
-            <li className="footer-list-item">
-              <a href="#" className="footer-link">Track Your Order</a>
-            </li>
+            {/* <li className="footer-list-item">
+              <Link to="/track-order" className="footer-link">Track Your Order</Link>
+            </li> */}
             <li className="footer-list-item">
               <a href="/faqs" className="footer-link">FAQ&apos;s</a>
             </li>

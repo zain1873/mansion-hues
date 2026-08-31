@@ -1,0 +1,613 @@
+.track-page {
+  font-family: var(--theme-font);
+  color: #1a1a1a;
+  background-color: #f5f5f4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================================================
+   Hero banner (dark, holds the Navbar)
+   =========================================================== */
+.track-hero {
+  position: relative;
+  background: linear-gradient(135deg, #121212 0%, #1c1a24 55%, #26212f 100%);
+  color: #f4f1ea;
+  padding: 140px 0 160px;
+  text-align: center;
+}
+
+.track-hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.track-hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a89ecb;
+  margin: 0 0 16px;
+}
+
+.track-hero-title {
+  font-family: var(--theme-font);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.12;
+  margin: 0 0 16px;
+  color: #f4f1ea;
+}
+
+.track-hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #d6d2c8;
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+/* ===========================================================
+   Main content area
+   =========================================================== */
+.track-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ---------- Search / form card (overlaps hero) ---------- */
+.track-search {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  margin: -80px auto 0;
+}
+
+.track-form-card {
+  background: #ffffff;
+  border: 1px solid #e8e4da;
+  border-radius: 4px;
+  padding: 36px 40px 32px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.track-form-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #f4f0e7;
+  color: #c9a66b;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.track-form-title {
+  font-family: var(--theme-font);
+  font-weight: 500;
+  font-size: 24px;
+  color: #1a1a1a;
+  margin: 0 0 24px;
+}
+
+.track-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.track-field {
+  text-align: left;
+}
+
+.track-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.track-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: #1a1a1a;
+  background: #fbfaf8;
+  border: 1px solid #dddad1;
+  border-radius: 3px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.track-input:focus {
+  outline: none;
+  border-color: #c9a66b;
+  box-shadow: 0 0 0 3px rgba(201, 166, 107, 0.18);
+  background: #fff;
+}
+
+.track-input::placeholder {
+  color: #aaa;
+  font-weight: 300;
+}
+
+.track-input-error {
+  border-color: #d9534f;
+}
+
+.track-input-error:focus {
+  box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.15);
+}
+
+.track-error {
+  display: block;
+  font-size: 12.5px;
+  color: #d9534f;
+  margin-top: 6px;
+}
+
+.track-btn {
+  width: 100%;
+  height: 48px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.track-help {
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #8a857a;
+  margin: 2px 0 0;
+/* ===========================================================
+   Result
+   =========================================================== */
+.track-result {
+  margin-top: 48px;
+  background: #ffffff;
+  border: 1px solid #e8e4da;
+  border-radius: 4px;
+  padding: 32px 36px;
+}
+
+.track-result-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #ece8df;
+}
+
+.track-result-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c9a66b;
+  margin: 0 0 6px;
+}
+
+.track-result-title {
+  font-family: var(--theme-font);
+  font-weight: 500;
+  font-size: 26px;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.track-result-meta {
+  font-size: 14px;
+  font-weight: 300;
+  color: #6f6a60;
+  margin: 0;
+}
+
+.track-change-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  background: transparent;
+  border: 1px solid #dcd8cc;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.track-change-btn:hover {
+  border-color: #1a1a1a;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* ---------- Timeline ---------- */
+.track-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 36px 0 8px;
+}
+
+.track-step {
+  position: relative;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.track-step::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 50%;
+  height: 2px;
+  background: #e5e1d6;
+  z-index: 0;
+}
+
+.track-step::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  right: 0;
+  height: 2px;
+  background: #e5e1d6;
+  z-index: 0;
+}
+
+.track-step:first-child::before,
+.track-step:last-child::after {
+  display: none;
+}
+
+.track-step-marker {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  font-size: 16px;
+  background: #ece8df;
+  color: #b6b0a2;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.track-step-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #8a857a;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.track-step-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: #a29c90;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* done & current connecting lines turn gold */
+.track-step-done::after,
+.track-step-current::after {
+  background: #c9a66b;
+}
+
+.track-step-done .track-step-marker {
+  background: #c9a66b;
+  color: #fff;
+}
+
+.track-step-current .track-step-marker {
+  background: #fff;
+  color: #c9a66b;
+  border-color: #c9a66b;
+  box-shadow: 0 0 0 6px rgba(201, 166, 107, 0.15);
+}
+
+.track-step-done .track-step-label,
+.track-step-current .track-step-label {
+  color: #1a1a1a;
+}
+
+/* ---------- Details grid ---------- */
+.track-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.track-detail-card {
+  background: #fbfaf8;
+  border: 1px solid #ece8df;
+  border-radius: 4px;
+  padding: 20px 22px;
+}
+
+.track-detail-wide {
+  grid-column: 1 / -1;
+}
+
+.track-detail-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #c9a66b;
+  margin: 0 0 10px;
+}
+
+.track-detail-value {
+  font-family: var(--theme-font);
+  font-weight: 500;
+  font-size: 24px;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.track-detail-desc {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #6f6a60;
+  margin: 0;
+}
+
+.track-address {
+  padding-top: 2px;
+}
+
+.track-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.track-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ece8df;
+  font-size: 14px;
+}
+
+.track-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.track-item-name {
+  flex: 1;
+  color: #1a1a1a;
+}
+
+.track-item-size {
+  color: #8a857a;
+  font-weight: 300;
+}
+
+.track-item-qty {
+  color: #8a857a;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.track-item-price {
+  font-weight: 500;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+/* ===========================================================
+   Need help strip
+   =========================================================== */
+.track-support {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border: 1px solid #e8e4da;
+  border-radius: 4px;
+  padding: 24px 28px;
+}
+
+.track-support-icon {
+  font-size: 34px;
+  color: #c9a66b;
+  flex-shrink: 0;
+}
+
+.track-support-title {
+  font-family: var(--theme-font);
+  font-weight: 500;
+  font-size: 18px;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.track-support-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: #6f6a60;
+  margin: 0;
+  max-width: 460px;
+}
+
+.track-support-btn {
+  margin-left: auto;
+  padding: 13px 22px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+}
+
+.track-support-btn:hover {
+  background: #c9a66b;
+  border-color: #c9a66b;
+  color: #fff;
+}
+
+/* ===========================================================
+   Responsive
+   =========================================================== */
+@media (max-width: 1024px) {
+  .track-hero {
+    padding: 130px 0 150px;
+  }
+
+  .track-hero-title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  .track-hero {
+    padding: 120px 0 140px;
+  }
+
+  .track-hero-title {
+    font-size: 32px;
+  }
+
+  .track-hero-sub {
+    font-size: 14px;
+  }
+
+  .track-main {
+    padding: 0 18px 64px;
+  }
+
+  .track-search {
+    margin-top: -70px;
+  }
+
+  .track-form-card {
+    padding: 30px 24px 26px;
+  }
+
+  /* Timeline: switch to a vertical layout for small screens */
+  .track-timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 28px 0 8px;
+  }
+
+  .track-step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 14px;
+    text-align: left;
+    padding: 0;
+    padding-bottom: 24px;
+  }
+
+  .track-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .track-step::before {
+    top: 44px;
+    left: 19px;
+    right: auto;
+    width: 2px;
+    height: calc(100% - 44px);
+    background: #e5e1d6;
+  }
+
+  .track-step::after {
+    display: none;
+  }
+
+  .track-step-marker {
+    grid-row: 1 / span 2;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+
+  .track-step-label {
+    align-self: end;
+    margin-bottom: 2px;
+  }
+
+  .track-step-desc {
+    grid-column: 2;
+  }
+
+  .track-step-done::before,
+  .track-step-current::before {
+    background: #c9a66b;
+  }
+
+  .track-result {
+    padding: 26px 22px;
+    margin-top: 40px;
+  }
+
+  .track-details {
+    grid-template-columns: 1fr;
+  }
+
+  .track-detail-wide {
+    grid-column: auto;
+  }
+
+  .track-support-btn {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .track-hero {
+    padding: 110px 0 130px;
+  }
+
+  .track-hero-title {
+    font-size: 28px;
+  }
+
+  .track-result-title {
+    font-size: 22px;
+  }
+
+  .track-result-meta {
+    font-size: 13px;
+  }
+}
+}

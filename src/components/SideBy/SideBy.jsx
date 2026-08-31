@@ -1,8 +1,11 @@
 import React from 'react';
 import './SideBy.css';
 import projectVideo from '../../assets/project-video.mp4';
+import { useNavigate } from "react-router-dom";
+
 
 function SideBy() {
+  const navigate = useNavigate();
   return (
     <section className="sideby flex">
       {/* Left side: background video */}
@@ -21,8 +24,13 @@ function SideBy() {
       <div className="sideby-content flex flex-col items-center justify-center">
         <h1 className="sideby-title">Summer Casuals</h1>
         <p className="sideby-subtitle">Discover what's new</p>
-        <button className="theme-btn">Shop Now</button>
-      </div>
+        <button
+          className="theme-btn"
+          onClick={() => navigate("/collection/casual")}
+        >
+          Shop Now
+        </button>
+    </div>
     </section>
   );
 }

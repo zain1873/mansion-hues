@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Specialcollections.css";
 
 // Data for each collection card.
@@ -9,34 +10,40 @@ const collections = [
     title: "Unstitched",
     image:
       "https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=1200&q=85",
-    link: "/collections/unstitched",
+    category: "unstitched",
   },
   {
     id: 2,
     title: "Casuals",
     image:
       "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85",
-    link: "/collections/casuals",
+    category: "casual",
   },
   {
     id: 3,
     title: "West",
     image:
       "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85",
-    link: "/collections/west",
+    category: "west",
   },
   {
     id: 4,
     title: "Formals",
     image:
       "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
-    link: "/collections/formals",
+    category: "formals",
   },
 ];
 
-// Simple functional component. No hooks, no advanced logic —
+// Simple functional component. No hooks besides navigation —
 // it just loops over the collections array and renders a card for each.
 function SpecialCollections() {
+  const navigate = useNavigate();
+
+  const handleCardClick = (category) => {
+    navigate(`/collection/${category}`);
+  };
+
   return (
     <section className="collections-section">
       {/* Tailwind: container + flex for the header row */}
@@ -59,10 +66,11 @@ function SpecialCollections() {
       {/* Tailwind: grid for basic layout of the cards */}
       <div className="container grid collections-grid">
         {collections.map((item) => (
-          <a
+          <div
             className="collection-card"
-            href={item.link}
             key={item.id}
+            onClick={() => handleCardClick(item.category)}
+            style={{ cursor: "pointer" }}
           >
             <div className="collection-image-wrapper">
               <img
@@ -72,7 +80,7 @@ function SpecialCollections() {
               />
             </div>
             <p className="collection-label">{item.title}</p>
-          </a>
+          </div>
         ))}
       </div>
     </section>

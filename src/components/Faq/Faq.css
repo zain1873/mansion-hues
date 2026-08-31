@@ -149,7 +149,7 @@
 }
 
 .faq-question:hover .faq-question-text {
-  color: #a89ecb; /* lavender accent on hover */
+  color: var(--theme-color); 
 }
 
 .faq-icon {

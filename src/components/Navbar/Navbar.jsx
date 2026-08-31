@@ -1,12 +1,15 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import navLogo from "../../assets/nav-logo.png";
 import lookbookImg from "../../assets/banner.jpg";
 import CartDrawer from "../Cartdrawer/CartDrawer";
 import CartContext from "../../context/CartContext";
 import AuthContext from "../../context/AuthContext";
+import WishlistContext from "../../context/WishlistContext";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
@@ -17,6 +20,9 @@ function Navbar() {
 
   // Pull auth info (current user + modal opener + logout) from global context.
   const { user, setIsAuthModalOpen, logout } = useContext(AuthContext);
+
+  // Pull wishlist count (for the badge on the wishlist icon) from global context.
+  const { wishlistCount } = useContext(WishlistContext);
 
   const accountRef = useRef(null);
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -73,21 +79,24 @@ function Navbar() {
             </div>
 
             <div className="shop-menu-col">
-              <h4>By Type</h4>
-              <a href="/type/solids">Solids</a>
-              <a href="/type/embroidered">Embroidered</a>
-              <a href="/type/printed">Printed</a>
-              <a href="/type/monochrome">monochrome</a>
+              <h4>By Collecion</h4>
+                <a href="/collection/solids">Solids</a>
+                <a href="/collection/embroidered">Embroidered</a>
+                <a href="/collection/unstitched">Unstitched</a>
+                <a href="/collection/casual">Casuals</a>
+                <a href="/collection/west">West</a>
+                <a href="/collection/formals">Formals</a>
+ 
             </div>
 
             <div className="shop-menu-col">
               <h4>By Fabric</h4>
-              <a href="/fabric/lawn">Lawn</a>
-              <a href="/fabric/crepe">Crepe</a>
-              <a href="/fabric/matte-twill">Matte Twill</a>
-              <a href="/fabric/linen">Linen</a>
-              <a href="/fabric/silk">Silk</a>
-            </div>
+              <span className="shop-menu-tag">Lawn</span>
+              <span className="shop-menu-tag">Crepe</span>
+              <span className="shop-menu-tag">Matte Twill</span>
+              <span className="shop-menu-tag">Linen</span>
+              <span className="shop-menu-tag">Silk</span>
+          </div>
 
             <div className="shop-menu-image">
               <img src={lookbookImg} alt="Lookbook" />
@@ -152,8 +161,12 @@ function Navbar() {
           )}
         </div>
 
-        {/* Wishlist icon with count */}
-        <button className="navbar-icon-btn navbar-icon-with-badge" aria-label="Wishlist">
+        {/* Wishlist icon with count - navigates to the wishlist page */}
+        <button
+          className="navbar-icon-btn navbar-icon-with-badge"
+          aria-label="Wishlist"
+          onClick={() => navigate("/wishlist")}
+        >
           <svg viewBox="0 0 24 24" width="20" height="20">
             <path
               d="M12 21s-7-4.35-9.5-8.5C.7 9 2 5 5.5 5c2 0 3.5 1.2 4.5 2.5C11 6.2 12.5 5 14.5 5 18 5 19.3 9 17.5 12.5 15 16.65 12 21 12 21z"
@@ -162,7 +175,10 @@ function Navbar() {
               fill="none"
             />
           </svg>
-          <span className="navbar-badge">0</span>
+          {/* Show the badge only when there is at least one item in the wishlist */}
+          {wishlistCount > 0 && (
+            <span className="navbar-badge">{wishlistCount}</span>
+          )}
         </button>
 
         {/* Cart icon with count - opens the cart drawer */}
@@ -216,32 +232,25 @@ function Navbar() {
         </div>
         <div className="mobile-menu-links">
           <p className="mobile-menu-section-title">Main Menu</p>
-          <a href="/new-arrivals" onClick={closeMobileMenu}>New Arrivals</a>
-          <a href="/print-shop" onClick={closeMobileMenu}>The Print Shop</a>
-          <a href="/mandarin-set" onClick={closeMobileMenu}>Mandarin Set</a>
-          <a href="/monochrome-edit" onClick={closeMobileMenu}>Monochrome Edit</a>
-          <a href="/pure-lawn" onClick={closeMobileMenu}>Pure Lawn</a>
-          <a href="/resort-collection" onClick={closeMobileMenu}>Resort Collection</a>
-          <a href="/best-sellers" onClick={closeMobileMenu}>Best Sellers</a>
-          <a href="/spring-summer-26" onClick={closeMobileMenu}>Spring/Summer'26</a>
-          <a href="/brown-edition" onClick={closeMobileMenu}>Brown Edition</a>
+          <a href="/new-arrivals" onClick={closeMobileMenu}>New In</a>
+          <a href="/formal-edit" onClick={closeMobileMenu}>Formal Edit</a>
+          <a href="/co-ordsets" onClick={closeMobileMenu}>Co-Ord Sets</a>
+          <a href="/fusion-edit" onClick={closeMobileMenu}>Fusion Edit</a>
+
+          <p className="mobile-menu-section-title">By Collecion</p>
+              <a href="collection/solids">Solids</a>
+              <a href="collection/embroidered">Embroidered</a>
+              <a href="collection/unstitched">Unstitched</a>
+              <a href="collection/casual">Casuals</a>
+              <a href="collection/west">West</a>
+              <a href="collection/formals">Formals</a>
 
           <p className="mobile-menu-section-title">By Fabric</p>
-          <a href="/fabric/lawn" onClick={closeMobileMenu}>Lawn</a>
-          <a href="/fabric/crepe" onClick={closeMobileMenu}>Crepe</a>
-          <a href="/fabric/matte-twill" onClick={closeMobileMenu}>Matte Twill</a>
-          <a href="/fabric/linen" onClick={closeMobileMenu}>Linen</a>
-          <a href="/fabric/silk" onClick={closeMobileMenu}>Silk</a>
-          <a href="/fabric/velvet" onClick={closeMobileMenu}>Velvet</a>
-
-          <p className="mobile-menu-section-title">By Style</p>
-          <a href="/style/everyday" onClick={closeMobileMenu}>Everyday Wear</a>
-          <a href="/style/festive" onClick={closeMobileMenu}>Festive Wear</a>
-          <a href="/style/dinner" onClick={closeMobileMenu}>Dinner Wear</a>
-          <a href="/style/co-ord" onClick={closeMobileMenu}>Co-ord sets</a>
-          <a href="/style/easterns" onClick={closeMobileMenu}>Easterns</a>
-          <a href="/style/westerns" onClick={closeMobileMenu}>Westerns</a>
-          <a href="/style/kaftaans" onClick={closeMobileMenu}>Kaftaans</a>
+          <span className="mobile-menu-tag">Lawn</span>
+          <span className="mobile-menu-tag">Crepe</span>
+          <span className="mobile-menu-tag">Matte Twill</span>
+          <span className="mobile-menu-tag">Linen</span>
+          <span className="mobile-menu-tag">Silk</span>
         </div>
       </div>
 
