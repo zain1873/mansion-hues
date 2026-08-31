@@ -113,8 +113,7 @@ export default function SolidsCollection() {
   const navigate = useNavigate();
 
   // Centralized data se sirf "solids" category ke products nikalna
-  const solidProducts = products.filter((p) => p.category === "solids");
-
+const solidProducts = products.filter((p) => p.category.includes("solids"));
   const handleCardClick = (id) => {
     navigate(`/product/${id}`);
   };

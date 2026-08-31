@@ -7,24 +7,40 @@ import products from "../../data/products";
 
 import "./CollectionPage.css";
 
-// categoryName (URL se aane wala) → page par dikhne wala asal title.
+// categoryName (URL se aane wala) → title ke 3 hisse.
+// "italic" wala hissa styling mein tilted (italic) show hoga.
 // Naya collection add karna ho tou bas yahan ek entry add karni hai.
 const categoryTitles = {
-  casual: "Our Casual Collections",
-  solids: "Our Solids Collection",
-};
+  casual: { prefix: "Our", italic: "Casual", suffix: "Collections" },
+  solids: { prefix: "Our", italic: "Solids", suffix: "Collection" },
+  unstitched: { prefix: "Our", italic: "Unstitched", suffix: "Collection" },
+  west: { prefix: "Our", italic: "West", suffix: "Collection" },
+  formals: { prefix: "Our", italic: "Formals", suffix: "Collection" },
+  embroidered: { prefix: "Our", italic: "Embroidered", suffix: "Collection" },
+  "best-sellers": { prefix: "", italic: "Best Sellers", suffix: "" },
 
+    // Main Menu wale add karo:
+  "new-arrivals": { prefix: "Our", italic: "New In", suffix: "Collection" },
+  "formal-edit": { prefix: "Our", italic: "Formal Edit", suffix: "" },
+  "co-ordsets": { prefix: "Our", italic: "Co-Ord Sets", suffix: "" },
+  "fusion-edit": { prefix: "Our", italic: "Fusion Edit", suffix: "" },
+};
 function CollectionPage() {
   const { categoryName } = useParams();
   const navigate = useNavigate();
 
   // Sirf usi category ke products nikalna jo URL mein aayi hai.
-  const filteredProducts = products.filter(
-    (product) => product.category === categoryName
-  );
+const filteredProducts =
+  categoryName === "best-sellers"
+    ? products.filter((product) => product.isBestSeller)
+    : products.filter((product) => product.category.includes(categoryName));
 
   // Agar mapping mein title na mile (unknown category), fallback title.
-  const pageTitle = categoryTitles[categoryName] || "Collection";
+  const titleParts = categoryTitles[categoryName] || {
+    prefix: "",
+    italic: "Collection",
+    suffix: "",
+  };
 
   const handleCardClick = (id) => {
     navigate(`/product/${id}`);
@@ -34,7 +50,13 @@ function CollectionPage() {
     <>
       <Navbar />
       <main className="collection-page">
-        <h1 className="collection-page-title">{pageTitle}</h1>
+        <h1 className="collection-page-title">
+          {titleParts.prefix}{" "}
+          <span className="collection-page-title-italic">
+            {titleParts.italic}
+          </span>{" "}
+          {titleParts.suffix}
+        </h1>
 
         {filteredProducts.length === 0 ? (
           <p className="collection-page-empty">No products found.</p>

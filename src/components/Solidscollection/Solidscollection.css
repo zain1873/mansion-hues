@@ -1,11 +1,4 @@
-/* ===========================================================
-   Solids Collection - custom styles
-   All classes use the "sld-" prefix so they never collide
-   with classes from other components.
-   (Layout/spacing/flex/grid is handled by Tailwind in the JSX.
-   This file only handles colors, typography, hover effects,
-   borders, shadows, animations and responsiveness.)
-   =========================================================== */
+
 
 /* Section background */
 .sld-section {

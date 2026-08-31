@@ -157,7 +157,7 @@ function ContactPage() {
           </div>
 
           {/* Submit button */}
-          <button type="submit" className="send-btn">
+          <button type="submit" className="theme-btn">
             Send Message
           </button>
         </form>

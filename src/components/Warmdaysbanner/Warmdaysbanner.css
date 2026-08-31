@@ -140,11 +140,14 @@
 /* Phones */
 @media (max-width: 480px) {
   .wdb-left {
-    height: 320px;
+    height: 400px;
   }
 
   .wdb-text-panel {
     padding: 24px 12px;
+  }
+  .wdb-bottom-image {
+    display: none;
   }
 
   .wdb-heading {

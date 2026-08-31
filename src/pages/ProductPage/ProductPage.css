@@ -200,6 +200,12 @@
   justify-content: center;
 }
 
+/* Highlight the heart button once the product is saved to the wishlist. */
+.wishlist-btn-active {
+  border-color: #b00020;
+  background: #fff0f0;
+}
+
 .stock-warning {
   font-size: 13px;
   color: #b00020;
@@ -317,6 +323,7 @@
 .size-guide-left {
   flex: 1 1 50%;
   min-width: 260px;
+  display: none;
 }
 
 .size-guide-right {

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Bestsellers.css";
 
 // Verified free-to-use Unsplash images (Unsplash License)
@@ -9,15 +10,19 @@ const IMAGE_EMBROIDERED =
 
 // Simple functional component for the "Best Sellers" section
 function BestSellers() {
+  const navigate = useNavigate();
+
   return (
     <section className="best-sellers">
       {/* Header row: title on the left, "View all" button on the right */}
       <div className="best-sellers-header">
         <div>
-          <span className="best-sellers-eyebrow">Curated Edit</span>
-          <h2 className="best-sellers-title">Best Sellers</h2>
+          <h2 className="best-sellers-title">Best <span className="casual-title-italic">Sellers</span> </h2>
         </div>
-        <button className="view-all-btn">
+        <button
+          className="view-all-btn"
+          onClick={() => navigate("/collection/best-sellers")}
+        >
           <span>View all</span>
           <span className="arrow" aria-hidden="true">&rarr;</span>
         </button>
@@ -26,7 +31,11 @@ function BestSellers() {
       {/* Two products cards side by side */}
       <div className="best-sellers-grid">
         {/* Card 1 */}
-        <a href="#" className="products-card">
+        <div
+          className="products-card"
+          onClick={() => navigate("/collection/solids")}
+          style={{ cursor: "pointer" }}
+        >
           <div className="products-image-wrap">
             <img src={IMAGE_SOLIDS} alt="Solids" className="products-image" />
           </div>
@@ -34,10 +43,14 @@ function BestSellers() {
             <span className="products-label">Solids</span>
             <span className="products-cta">Shop now &rarr;</span>
           </div>
-        </a>
+        </div>
 
         {/* Card 2 */}
-        <a href="#" className="products-card">
+        <div
+          className="products-card"
+          onClick={() => navigate("/collection/embroidered")}
+          style={{ cursor: "pointer" }}
+        >
           <div className="products-image-wrap">
             <img src={IMAGE_EMBROIDERED} alt="Embroidered" className="products-image" />
           </div>
@@ -45,7 +58,7 @@ function BestSellers() {
             <span className="products-label">Embroidered</span>
             <span className="products-cta">Shop now &rarr;</span>
           </div>
-        </a>
+        </div>
       </div>
     </section>
   );
